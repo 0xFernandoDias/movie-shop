@@ -66,11 +66,11 @@ defineProps({
     type: Number,
     required: false,
   },
-  clearFavorites: {
+  deleteAllFavorites: {
     type: Function,
     required: true,
   },
-  clearCart: {
+  deleteAllCartItems: {
     type: Function,
     required: true,
   },

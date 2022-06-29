@@ -12,7 +12,6 @@ defineProps({
           required: true,
         },
         price: {
-          // voteAverage * 10
           type: Number,
           required: true,
         },
@@ -25,7 +24,7 @@ defineProps({
     ],
     required: true,
   },
-  removeFromCart: {
+  deleteCartItem: {
     type: Function,
     required: true,
   },

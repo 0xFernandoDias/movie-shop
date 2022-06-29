@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
   location: {
-    type: String,
-    required: false,
+    type: 'favorites' || 'cart' || 'checkout',
+    required: true,
   },
   movies: {
     type: [
@@ -16,7 +16,6 @@ defineProps({
           required: true,
         },
         price: {
-          // voteAverage * 10
           type: Number,
           required: true,
         },
@@ -33,11 +32,11 @@ defineProps({
     type: Function,
     required: true,
   },
-  removeFromFavorites: {
+  deleteFavorite: {
     type: Function,
     required: true,
   },
-  removeFromCart: {
+  deleteCartItem: {
     type: Function,
     required: true,
   },

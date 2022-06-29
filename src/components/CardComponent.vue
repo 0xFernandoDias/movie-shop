@@ -16,11 +16,11 @@ defineProps({
     type: Function,
     required: true,
   },
-  removeFromFavorites: {
+  deleteFavorite: {
     type: Function,
     required: true,
   },
-  removeFromCart: {
+  deleteCartItem: {
     type: Function,
     required: true,
   },
@@ -42,9 +42,11 @@ defineProps({
         type: Number,
         required: true,
       },
-      // genrer
+      genre: {
+        type: String,
+        required: true,
+      },
       price: {
-        // voteAverage * 10
         type: Number,
         required: true,
       },

@@ -8,9 +8,13 @@ defineProps({
     type: Number,
     required: false,
   },
-  cartQuantity: {
+  cartItemsQuantity: {
     type: Number,
     required: false,
+  },
+  handleNavbarIconsClick: {
+    type: Function,
+    required: true,
   },
 })
 </script>
