@@ -1,0 +1,88 @@
+<script setup>
+defineProps({
+  showedBox: {
+    type: 'none' || 'favorites' || 'cart',
+    required: true,
+  },
+  favorites: {
+    type: [
+      {
+        posterPath: {
+          type: String,
+          required: true,
+        },
+        releaseDate: {
+          type: String,
+          required: true,
+        },
+        title: {
+          type: String,
+          required: true,
+        },
+        voteAverage: {
+          type: Number,
+          required: true,
+        },
+        // genrer
+        price: {
+          // voteAverage * 10
+          type: Number,
+          required: true,
+        },
+      },
+    ],
+    required: false,
+  },
+  cart: {
+    type: [
+      {
+        posterPath: {
+          type: String,
+          required: true,
+        },
+        releaseDate: {
+          type: String,
+          required: true,
+        },
+        title: {
+          type: String,
+          required: true,
+        },
+        voteAverage: {
+          type: Number,
+          required: true,
+        },
+        // genrer
+        price: {
+          // voteAverage * 10
+          type: Number,
+          required: true,
+        },
+      },
+    ],
+    required: false,
+  },
+  totalPrice: {
+    type: Number,
+    required: false,
+  },
+  clearFavorites: {
+    type: Function,
+    required: true,
+  },
+  clearCart: {
+    type: Function,
+    required: true,
+  },
+  handleSubmit: {
+    type: Function,
+    required: true,
+  },
+})
+</script>
+
+<template>
+  <div></div>
+</template>
+
+<style scoped></style>

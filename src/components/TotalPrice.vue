@@ -1,10 +1,14 @@
 <script setup>
 defineProps({
-  msg: {
+  location: {
     type: String,
-    required: true,
+    required: false,
   },
-});
+  totalPrice: {
+    type: Number,
+    required: false,
+  },
+})
 </script>
 
 <template>

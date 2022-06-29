@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div></div>
+  <h1 class="text-3xl font-bold">Hello Checkout!</h1>
 </template>
 
 <style scoped></style>
