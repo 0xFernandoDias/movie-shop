@@ -3,12 +3,14 @@ import { defineStore } from 'pinia'
 export const useUserRegisterStore = defineStore({
   id: 'userRegister',
   state: () => ({
-    userRegister: null,
+    userRegister: {},
   }),
   getters: {
-    userName: () => {},
+    getUserName: (state) => state.userRegister.name,
   },
   actions: {
-    resetUserRegister: () => {},
+    resetUserRegister: () => {
+      this.state.userRegister = {}
+    },
   },
 })

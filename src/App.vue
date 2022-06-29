@@ -17,7 +17,7 @@ const getMovies = computed(() => {
 
 // eslint-disable-next-line no-unused-vars
 const state = reactive({
-  searchBox: 'none',
+  menuBox: 'none',
   searchInput: '',
 })
 </script>
@@ -28,6 +28,11 @@ const state = reactive({
   <ul>
     <li v-for="movie in getMovies" :key="movie">
       {{ movie.title }}
+      {{ movie.release_date }}
+      {{ movie.vote_average }}
+      <!-- {{ movie.genre }} -->
+      {{ movie.price }}
+      {{ movie.poster_path }}
     </li>
   </ul>
 </template>

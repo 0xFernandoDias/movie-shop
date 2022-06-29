@@ -8,21 +8,88 @@ export const useMoviesStore = defineStore({
   }),
   getters: {
     getMovies: (state) => state.movies,
-    getCart: () => {},
-    getFavorites: () => {},
-    isInCart: () => {},
-    isInFavorites: () => {},
-    getCartItemsQuantity: () => {},
-    getFavoritesQuantity: () => {},
-    getTotalPrice: () => {},
+    getCart: (state) => {
+      let cart = state.movies.filter((movie) => {
+        if (movie.isInCart) {
+          return movie
+        }
+      })
+      return cart
+    },
+    getFavorites: (state) => {
+      let favorites = state.movies.filter((movie) => {
+        if (movie.isFavorite) {
+          return movie
+        }
+      })
+      return favorites
+    },
+    getCartItemsQuantity: (state) => {
+      let cart = state.movies.filter((movie) => {
+        if (movie.isInCart) {
+          return movie
+        }
+      })
+      return cart.length
+    },
+    getFavoritesQuantity: (state) => {
+      let favorites = state.movies.filter((movie) => {
+        if (movie.isFavorite) {
+          return movie
+        }
+      })
+      return favorites.length
+    },
+    getTotalPrice: (state) => {
+      let cart = state.movies.filter((movie) => {
+        if (movie.isInCart) {
+          return movie
+        }
+      })
+      cart.reduce((acc, movie) => {
+        return acc + movie.price
+      }, 0)
+    },
   },
   actions: {
-    addToCart: () => {},
-    addToFavorites: () => {},
-    deleteAllCartItems: () => {},
-    deleteAllFavorites: () => {},
-    deleteCartItem: () => {},
-    deleteFavorite: () => {},
+    addToCart: (movieTitle) => {
+      this.movies.filter((movie) => {
+        if (movie.title === movieTitle) {
+          movie.isInCart = true
+        }
+      })
+    },
+    addToFavorites: (movieTitle) => {
+      this.movies.filter((movie) => {
+        if (movie.title === movieTitle) {
+          movie.isFavorite = true
+        }
+      })
+    },
+    deleteAllCartItems: () => {
+      this.movies.map((movie) => {
+        movie.isInCart = false
+      })
+    },
+    deleteAllFavorites: () => {
+      this.movies.map((movie) => {
+        movie.isFavorite = false
+      })
+    },
+    deleteCartItem: (movieTitle) => {
+      this.movies.filter((movie) => {
+        if (movie.title === movieTitle) {
+          movie.isInCart = false
+        }
+      })
+    },
+    deleteFavorite: (movieTitle) => {
+      this.movies.filter((movie) => {
+        if (movie.title === movieTitle) {
+          movie.isFavorite = false
+        }
+      })
+    },
     async fetchMovies() {
       try {
         const {
@@ -35,6 +102,7 @@ export const useMoviesStore = defineStore({
           ...obj,
           isFavorite: false,
           isInTheCart: false,
+          price: Math.round(obj.vote_average) * 10,
         }))
 
         this.movies = moviesWithAdditionalProps
