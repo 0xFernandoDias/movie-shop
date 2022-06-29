@@ -23,9 +23,11 @@ defineProps({
           type: Number,
           required: true,
         },
-        // genrer
+        mediaType: {
+          type: String,
+          required: true,
+        },
         price: {
-          // voteAverage * 10
           type: Number,
           required: true,
         },
@@ -52,7 +54,10 @@ defineProps({
           type: Number,
           required: true,
         },
-        // genrer
+        mediaType: {
+          type: String,
+          required: true,
+        },
         price: {
           // voteAverage * 10
           type: Number,

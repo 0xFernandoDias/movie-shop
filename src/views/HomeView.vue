@@ -1,3 +1,5 @@
+<!-- Props strategy -->
+
 <script setup></script>
 
 <template>

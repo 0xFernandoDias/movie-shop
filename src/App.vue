@@ -1,24 +1,43 @@
 <script setup>
-import { computed, reactive } from 'vue'
+/* eslint-disable no-unused-vars */
+import { reactive, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
-
-import { onMounted } from 'vue'
 import { useMoviesStore } from '../src/stores/movies'
+import { useUserRegisterStore } from '../src/stores/userRegister'
+import { isInCart, isInFavorites } from '../src/hooks'
+import {
+  handleNavbarIconsClick,
+  handleMenuBoxSubmit,
+  handleCheckoutSubmit,
+  handleModalSubmit,
+} from '../src/helpers'
 
-const store = useMoviesStore()
+const {
+  getMovies,
+  getCart,
+  getFavorites,
+  getCartItemsQuantity,
+  getFavoritesQuantity,
+  getTotalPrice,
+  addToCart,
+  addToFavorites,
+  deleteAllCartItems,
+  deleteAllFavorites,
+  deleteCartItem,
+  deleteFavorite,
+  fetchMovies,
+} = useMoviesStore()
+
+const { getUserName, resetUserRegister } = useUserRegisterStore
 
 onMounted(() => {
-  store.fetchMovies()
+  fetchMovies()
 })
 
-const getMovies = computed(() => {
-  return store.getMovies
-})
-
-// eslint-disable-next-line no-unused-vars
 const state = reactive({
   menuBox: 'none',
   searchInput: '',
+  filteredMovies: [],
 })
 </script>
 
@@ -26,11 +45,11 @@ const state = reactive({
   <RouterView />
 
   <ul>
-    <li v-for="movie in getMovies" :key="movie">
+    <li v-for="movie in getMovies" :key="movie.title">
       {{ movie.title }}
       {{ movie.release_date }}
       {{ movie.vote_average }}
-      <!-- {{ movie.genre }} -->
+      {{ movie.media_type }}
       {{ movie.price }}
       {{ movie.poster_path }}
     </li>

@@ -53,38 +53,38 @@ export const useMoviesStore = defineStore({
   },
   actions: {
     addToCart: (movieTitle) => {
-      this.movies.filter((movie) => {
+      this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isInCart = true
         }
       })
     },
     addToFavorites: (movieTitle) => {
-      this.movies.filter((movie) => {
+      this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isFavorite = true
         }
       })
     },
     deleteAllCartItems: () => {
-      this.movies.map((movie) => {
+      this.movies.forEach((movie) => {
         movie.isInCart = false
       })
     },
     deleteAllFavorites: () => {
-      this.movies.map((movie) => {
+      this.movies.forEach((movie) => {
         movie.isFavorite = false
       })
     },
     deleteCartItem: (movieTitle) => {
-      this.movies.filter((movie) => {
+      this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isInCart = false
         }
       })
     },
     deleteFavorite: (movieTitle) => {
-      this.movies.filter((movie) => {
+      this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isFavorite = false
         }
@@ -95,7 +95,7 @@ export const useMoviesStore = defineStore({
         const {
           data: { results },
         } = await axios.get(
-          'https://api.themoviedb.org/3/trending/movie/week?api_key=fcfb42d19d2736ff4b22eece67b604ac&language=en-US'
+          'https://api.themoviedb.org/3/trending/all/week?api_key=fcfb42d19d2736ff4b22eece67b604ac&language=en-US'
         )
 
         const moviesWithAdditionalProps = results.map((obj) => ({

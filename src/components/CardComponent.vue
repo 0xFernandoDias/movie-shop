@@ -42,7 +42,7 @@ defineProps({
         type: Number,
         required: true,
       },
-      genre: {
+      mediaType: {
         type: String,
         required: true,
       },
