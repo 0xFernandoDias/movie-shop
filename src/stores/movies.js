@@ -30,7 +30,14 @@ export const useMoviesStore = defineStore({
         } = await axios.get(
           'https://api.themoviedb.org/3/trending/movie/week?api_key=fcfb42d19d2736ff4b22eece67b604ac&language=en-US'
         )
-        this.movies = results
+
+        const moviesWithAdditionalProps = results.map((obj) => ({
+          ...obj,
+          isFavorite: false,
+          isInTheCart: false,
+        }))
+
+        this.movies = moviesWithAdditionalProps
       } catch (e) {
         alert(e)
       }
