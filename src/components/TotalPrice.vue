@@ -2,17 +2,10 @@
 import { useMoviesStore } from '../stores/movies'
 
 const store = useMoviesStore()
-
-defineProps({
-  location: {
-    type: String,
-    required: false,
-  },
-})
 </script>
 
 <template>
-  <div>Total: {{ store.getTotalPrice }}</div>
+  <div class="row">
+    <span>Total: </span> <span>{{ store.getTotalPrice }}</span>
+  </div>
 </template>
-
-<style scoped></style>

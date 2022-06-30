@@ -4,6 +4,7 @@ import { useAppDataStore } from '../stores/appData'
 
 import ItemsList from './ItemsList.vue'
 import TotalPrice from './TotalPrice.vue'
+import ButtonComponent from './ButtonComponent.vue'
 
 const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
@@ -15,10 +16,15 @@ function handleCheckoutSubmit() {
 </script>
 
 <template>
-  <div>
+  <div class="column">
+    <div class="row">
+      <span>Image</span><span>Name</span><span>Qtd</span><span>Price</span>
+    </div>
     <ItemsList :location="'checkout'" :movies="moviesStore.getCart" />
     <TotalPrice />
-    <button :onclick="() => handleCheckoutSubmit()">submit</button>
+    <ButtonComponent :onclick="() => handleCheckoutSubmit()"
+      >Finalize</ButtonComponent
+    >
   </div>
 </template>
 

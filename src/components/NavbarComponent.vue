@@ -22,33 +22,35 @@ function handleNavbarIconsClick(icon) {
 </script>
 
 <template>
-  <div class="row">
+  <nav class="row">
     <LogoIcon />
     <form class="space between">
       <input
-        type="text"
+        type="search"
         v-model="moviesStore.searchInput"
         placeholder="Search"
       />
       <SearchIcon />
     </form>
 
-    <div
-      class="column"
-      as="button"
-      :onclick="() => handleNavbarIconsClick('favorites')"
-    >
-      <div class="quantity">{{ moviesStore.getFavoritesQuantity }}</div>
-      <FavoritesIcon :location="'navbar'" />
-    </div>
+    <div class="row">
+      <div
+        class="column"
+        as="button"
+        :onclick="() => handleNavbarIconsClick('favorites')"
+      >
+        <div class="quantity">{{ moviesStore.getFavoritesQuantity }}</div>
+        <FavoritesIcon :location="'navbar'" :active="false" />
+      </div>
 
-    <div
-      class="column"
-      as="button"
-      :onclick="() => handleNavbarIconsClick('cart')"
-    >
-      <div class="quantity">{{ moviesStore.getCartItemsQuantity }}</div>
-      <CartIcon :location="'navbar'" :active="false" />
+      <div
+        class="column"
+        as="button"
+        :onclick="() => handleNavbarIconsClick('cart')"
+      >
+        <div class="quantity">{{ moviesStore.getCartItemsQuantity }}</div>
+        <CartIcon :location="'navbar'" />
+      </div>
     </div>
-  </div>
+  </nav>
 </template>

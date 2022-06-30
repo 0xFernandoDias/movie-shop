@@ -1,5 +1,7 @@
 <script setup>
 import { useMoviesStore } from '../stores/movies'
+import CartIcon from '../assets/CartIcon.vue'
+import TrashIcon from '../assets/TrashIcon.vue'
 
 const store = useMoviesStore()
 
@@ -21,45 +23,45 @@ const addToCart = (movieTitle) => store.addToCart(movieTitle)
 
 <template>
   <ul v-if="location === 'favorites'">
-    <li :for="movie in movies">
+    <div :for="movie in movies" class="row">
       <image
         :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`"
       />
-      {{ movie.title }}
-      {{ movie.price }}
-      <button :onclick="() => addToCart(movie.title)">add to cart</button>
-      <button :onclick="() => deleteFavorite(movie.title)">
-        delete favorite
-      </button>
-    </li>
+      <span>{{ movie.title }}</span>
+      <span>{{ movie.price }}</span>
+      <CartIcon
+        as="button"
+        location="menuBox"
+        :onclick="() => addToCart(movie.title)"
+      />
+      <TrashIcon as="button" :onclick="() => deleteFavorite(movie.title)" />
+    </div>
   </ul>
+
   <ul v-else-if="location === 'cart'">
-    <li :for="movie in movies">
+    <div :for="movie in movies" class="row">
       <image
         :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`"
       />
-      {{ movie.title }}
+      <span>{{ movie.title }}</span>
       1
-      {{ movie.price }}
-      <button :onclick="() => deleteCartItem(movie.title)">
-        delete cart item
-      </button>
-    </li>
+      <span>{{ movie.price }}</span>
+      <TrashIcon as="button" :onclick="() => deleteCartItem(movie.title)" />
+    </div>
   </ul>
+
   <ul v-else-if="location === 'checkout'">
-    <li :for="movie in movies">
-      <image
-        :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`"
-      />
-      {{ movie.title }}
-      1
-      {{ movie.price }}
-      <button :onclick="() => deleteCartItem(movie.title)">
-        delete cart item
-      </button>
+    <div :for="movie in movies" class="column">
+      <div class="row">
+        <image
+          :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`"
+        />
+        <span>{{ movie.title }}</span>
+        1
+        <span>{{ movie.price }}</span>
+        <TrashIcon as="button" :onclick="() => deleteCartItem(movie.title)" />
+      </div>
       <hr />
-    </li>
+    </div>
   </ul>
 </template>
-
-<style scoped></style>

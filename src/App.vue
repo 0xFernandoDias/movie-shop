@@ -19,7 +19,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <NavbarComponent />
-  <MenuBox />
-  <RouterView />
+  <div
+    class="column"
+    :onclick="
+      () => {
+        appDataStore.menuBox = 'none'
+      }
+    "
+  >
+    <NavbarComponent />
+    <MenuBox
+      v-show="
+        appDataStore.menuBox === 'favorites' || appDataStore.menuBox === 'cart'
+      "
+    />
+    <RouterView />
+  </div>
 </template>

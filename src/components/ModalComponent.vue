@@ -2,6 +2,7 @@
 import { useUserRegisterStore } from '../stores/userRegister'
 import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
+import ButtonComponent from './ButtonComponent.vue'
 
 const userRegisterStore = useUserRegisterStore()
 const moviesStore = useMoviesStore()
@@ -18,8 +19,11 @@ function handleModalSubmit() {
 
 <template>
   <div>
-    Hello {{ userRegisterStore.getUserName }}
-    <button :onclick="() => handleModalSubmit()">ok</button>
+    <h1>Hello {{ userRegisterStore.getUserName }}</h1>
+    <span>Your purchase has been successfully completed</span>
+    <ButtonComponent :onclick="() => handleModalSubmit()"
+      >Go back to the store</ButtonComponent
+    >
   </div>
 </template>
 

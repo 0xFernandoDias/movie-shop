@@ -3,7 +3,16 @@ import { defineStore } from 'pinia'
 export const useUserRegisterStore = defineStore({
   id: 'userRegister',
   state: () => ({
-    userRegister: {},
+    userRegister: {
+      name: '',
+      cpf: '',
+      phone: '',
+      email: '',
+      zip: '',
+      address: '',
+      city: '',
+      state: '',
+    },
   }),
   getters: {
     getUserRegister: (state) => state.useUserRegister,

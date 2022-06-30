@@ -18,16 +18,20 @@ function handleMenuBoxSubmit() {
 </script>
 
 <template>
-  <div>
-    <button
-      :onclick="
-        appDataStore.menuBox === 'cart'
-          ? () => deleteAllCartItems()
-          : () => deleteAllFavorites()
-      "
-    >
-      clear
-    </button>
+  <div class="column">
+    <div class="row">
+      <span>My {{ appDataStore.menuBox }}</span>
+      <a
+        as="button"
+        :onclick="
+          appDataStore.menuBox === 'cart'
+            ? () => deleteAllCartItems()
+            : () => deleteAllFavorites()
+        "
+      >
+        Clear
+      </a>
+    </div>
     <ItemsList
       :location="appDataStore.menuBox"
       :movies="
@@ -36,11 +40,9 @@ function handleMenuBoxSubmit() {
           : moviesStore.getFavorites
       "
     />
-    <div v-show="appDataStore.menuBox === 'cart'">
+    <div v-show="appDataStore.menuBox === 'cart'" class="column">
       <TotalPrice />
-      <button :onclick="() => handleMenuBoxSubmit()">submit</button>
+      <button :onclick="() => handleMenuBoxSubmit()">Checkout</button>
     </div>
   </div>
 </template>
-
-<style scoped></style>

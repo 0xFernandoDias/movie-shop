@@ -9,13 +9,14 @@ const appDataStore = useAppDataStore()
 </script>
 
 <template>
-  <div>
-    <FormsContainer />
-    <CheckoutContainer />
-    <div v-show="appDataStore.showModal">
-      <ModalComponent />
+  <main class="column">
+    <h1>Checkout</h1>
+    <div class="row">
+      <FormsContainer />
+      <CheckoutContainer />
+      <div v-show="appDataStore.showModal">
+        <ModalComponent />
+      </div>
     </div>
-  </div>
+  </main>
 </template>
-
-<style scoped></style>
