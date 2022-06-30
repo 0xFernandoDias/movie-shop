@@ -1,12 +1,12 @@
 <script setup>
-import { useUserRegisterStore } from '../stores/userRegister'
 import { useAppDataStore } from '../stores/appData'
-
-const userRegisterStore = useUserRegisterStore()
+import { useUserRegisterStore } from '../stores/userRegister'
 
 // eslint-disable-next-line no-unused-vars
 const appDataStore = useAppDataStore()
 // formsOkay
+
+const userRegisterStore = useUserRegisterStore()
 </script>
 
 <template>

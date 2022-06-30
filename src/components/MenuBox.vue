@@ -1,15 +1,11 @@
 <script setup>
-import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
-
-import TotalPrice from './TotalPrice.vue'
+import { useMoviesStore } from '../stores/movies'
 import ItemsList from './ItemsList.vue'
+import TotalPrice from './TotalPrice.vue'
 
-const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
-
-const deleteAllFavorites = () => moviesStore.deleteAllFavorites()
-const deleteAllCartItems = () => moviesStore.deleteAllCartItems()
+const moviesStore = useMoviesStore()
 
 function handleMenuBoxSubmit() {
   // router.push({ name: 'checkout' })
@@ -25,8 +21,8 @@ function handleMenuBoxSubmit() {
         as="button"
         :onclick="
           appDataStore.menuBox === 'cart'
-            ? () => deleteAllCartItems()
-            : () => deleteAllFavorites()
+            ? () => moviesStore.deleteAllCartItems()
+            : () => moviesStore.deleteAllFavorites()
         "
       >
         Clear

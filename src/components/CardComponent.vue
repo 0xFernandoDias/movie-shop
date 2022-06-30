@@ -1,10 +1,10 @@
 <script setup>
-import ButtonComponent from './ButtonComponent.vue'
 import { useMoviesStore } from '../stores/movies'
+import ButtonComponent from './ButtonComponent.vue'
 import FavoritesIcon from '../assets/FavoritesIcon.vue'
 import StarIcon from '../assets/StarIcon.vue'
 
-const store = useMoviesStore()
+const moviesStore = useMoviesStore()
 
 defineProps({
   movie: {
@@ -23,8 +23,8 @@ defineProps({
         :active="movie.isFavorite ? true : false"
         :onclick="
           !movie.isFavorite
-            ? () => store.addToFavorites(movie.title)
-            : () => store.deleteFavorite(movie.title)
+            ? () => moviesStore.addToFavorites(movie.title)
+            : () => moviesStore.deleteFavorite(movie.title)
         "
       />
       <span>{{ movie.release_date }}</span>
@@ -44,8 +44,8 @@ defineProps({
       :color="movie.isInCart ? 'red-500' : 'indigo-600'"
       :onClick="
         movie.isInCart
-          ? () => store.deleteCartItem(movie.title)
-          : () => store.addToCart(movie.title)
+          ? () => moviesStore.deleteCartItem(movie.title)
+          : () => moviesStore.addToCart(movie.title)
       "
     />
   </div>

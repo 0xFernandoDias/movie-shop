@@ -1,3 +1,3 @@
 <template>
-  <div></div>
+  <font-awesome-icon icon="fa-solid fa-circle-notch fa-spin" />
 </template>

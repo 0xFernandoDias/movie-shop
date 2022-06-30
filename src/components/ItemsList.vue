@@ -3,7 +3,7 @@ import { useMoviesStore } from '../stores/movies'
 import CartIcon from '../assets/CartIcon.vue'
 import TrashIcon from '../assets/TrashIcon.vue'
 
-const store = useMoviesStore()
+const moviesStore = useMoviesStore()
 
 defineProps({
   location: {
@@ -15,10 +15,6 @@ defineProps({
     required: true,
   },
 })
-
-const deleteFavorite = (movieTitle) => store.deleteFavorite(movieTitle)
-const deleteCartItem = (movieTitle) => store.deleteCartItem(movieTitle)
-const addToCart = (movieTitle) => store.addToCart(movieTitle)
 </script>
 
 <template>
@@ -32,9 +28,12 @@ const addToCart = (movieTitle) => store.addToCart(movieTitle)
       <CartIcon
         as="button"
         location="menuBox"
-        :onclick="() => addToCart(movie.title)"
+        :onclick="() => moviesStore.addToCart(movie.title)"
       />
-      <TrashIcon as="button" :onclick="() => deleteFavorite(movie.title)" />
+      <TrashIcon
+        as="button"
+        :onclick="() => moviesStore.deleteFavorite(movie.title)"
+      />
     </div>
   </ul>
 
@@ -46,7 +45,10 @@ const addToCart = (movieTitle) => store.addToCart(movieTitle)
       <span>{{ movie.title }}</span>
       1
       <span>{{ movie.price }}</span>
-      <TrashIcon as="button" :onclick="() => deleteCartItem(movie.title)" />
+      <TrashIcon
+        as="button"
+        :onclick="() => moviesStore.deleteCartItem(movie.title)"
+      />
     </div>
   </ul>
 
@@ -59,7 +61,10 @@ const addToCart = (movieTitle) => store.addToCart(movieTitle)
         <span>{{ movie.title }}</span>
         1
         <span>{{ movie.price }}</span>
-        <TrashIcon as="button" :onclick="() => deleteCartItem(movie.title)" />
+        <TrashIcon
+          as="button"
+          :onclick="() => moviesStore.deleteCartItem(movie.title)"
+        />
       </div>
       <hr />
     </div>

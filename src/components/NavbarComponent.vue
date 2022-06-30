@@ -1,14 +1,13 @@
 <script setup>
-import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
-
+import { useMoviesStore } from '../stores/movies'
 import LogoIcon from '../assets/LogoIcon.vue'
 import SearchIcon from '../assets/SearchIcon.vue'
 import FavoritesIcon from '../assets/FavoritesIcon.vue'
 import CartIcon from '../assets/CartIcon.vue'
 
-const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
+const moviesStore = useMoviesStore()
 
 function handleNavbarIconsClick(icon) {
   if (icon === 'favorites') {

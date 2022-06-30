@@ -1,12 +1,12 @@
 <script setup>
-import { useUserRegisterStore } from '../stores/userRegister'
-import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
+import { useMoviesStore } from '../stores/movies'
+import { useUserRegisterStore } from '../stores/userRegister'
 import ButtonComponent from './ButtonComponent.vue'
 
-const userRegisterStore = useUserRegisterStore()
-const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
+const moviesStore = useMoviesStore()
+const userRegisterStore = useUserRegisterStore()
 
 function handleModalSubmit() {
   moviesStore.deleteAllCartItems()

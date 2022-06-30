@@ -1,13 +1,12 @@
 <script setup>
-import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
-
+import { useMoviesStore } from '../stores/movies'
 import ItemsList from './ItemsList.vue'
 import TotalPrice from './TotalPrice.vue'
 import ButtonComponent from './ButtonComponent.vue'
 
-const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
+const moviesStore = useMoviesStore()
 
 function handleCheckoutSubmit() {
   appDataStore.showModal = true

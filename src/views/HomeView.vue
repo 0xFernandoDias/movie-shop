@@ -14,5 +14,3 @@ const moviesStore = useMoviesStore()
     />
   </main>
 </template>
-
-<style scoped></style>
