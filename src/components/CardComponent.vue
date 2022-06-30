@@ -1,65 +1,30 @@
 <script setup>
 import ButtonComponent from './ButtonComponent.vue'
+import { useMoviesStore } from '../stores/movies'
+
+const store = useMoviesStore()
+
 defineProps({
-  isInCart: {
-    type: Boolean,
-    required: true,
-  },
-  isInFavorites: {
-    type: Boolean,
-    required: true,
-  },
-  addToFavorites: {
-    type: Function,
-    required: true,
-  },
-  addToCart: {
-    type: Function,
-    required: true,
-  },
-  deleteFavorite: {
-    type: Function,
-    required: true,
-  },
-  deleteCartItem: {
-    type: Function,
-    required: true,
-  },
   movie: {
-    type: {
-      posterPath: {
-        type: String,
-        required: true,
-      },
-      releaseDate: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-      voteAverage: {
-        type: Number,
-        required: true,
-      },
-      mediaType: {
-        type: String,
-        required: true,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-    },
+    type: Object,
+    required: true,
   },
 })
+
+const addToCart = (movieTitle) => store.addToCart(movieTitle)
+const deleteCartItem = (movieTitle) => store.deleteCartItem(movieTitle)
 </script>
 
 <template>
   <div>
-    <button onclick="!isInFavorites ? addToFavorites : deleteFavorite">
-      {{ !isInFavorites ? 'Add To Favorites' : 'Delete Favorite' }}
+    <button
+      :onclick="
+        !movie.isFavorite
+          ? () => store.addToFavorites(movie.title)
+          : () => store.deleteFavorite(movie.title)
+      "
+    >
+      {{ movie.isFavorite ? 'Delete Favorite' : 'Add To Favorites' }}
     </button>
     {{ movie.title }}
     {{ movie.release_date }}
@@ -68,9 +33,13 @@ defineProps({
     {{ movie.price }}
     {{ movie.poster_path }}
     <ButtonComponent
-      :text="isInCart ? 'Add' : 'Remove'"
-      :color="isInCart ? 'red-500' : 'indigo-600'"
-      :onClick="isInCart ? deleteCartItem : addToCart"
+      :text="movie.isInCart ? 'Remove to cart' : 'Add to cart'"
+      :color="movie.isInCart ? 'red-500' : 'indigo-600'"
+      :onClick="
+        movie.isInCart
+          ? () => deleteCartItem(movie.title)
+          : () => addToCart(movie.title)
+      "
     />
   </div>
 </template>

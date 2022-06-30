@@ -1,8 +1,9 @@
 <script setup>
 import TotalPrice from './TotalPrice.vue'
+import ItemsList from './ItemsList.vue'
 defineProps({
   showedBox: {
-    type: 'none' || 'favorites' || 'cart',
+    type: String,
     required: true,
   },
   favorites: {
@@ -10,35 +11,7 @@ defineProps({
     required: false,
   },
   cart: {
-    type: [
-      {
-        posterPath: {
-          type: String,
-          required: true,
-        },
-        releaseDate: {
-          type: String,
-          required: true,
-        },
-        title: {
-          type: String,
-          required: true,
-        },
-        voteAverage: {
-          type: Number,
-          required: true,
-        },
-        mediaType: {
-          type: String,
-          required: true,
-        },
-        price: {
-          // voteAverage * 10
-          type: Number,
-          required: true,
-        },
-      },
-    ],
+    type: Array,
     required: false,
   },
   totalPrice: {
@@ -75,7 +48,11 @@ defineProps({
 <template>
   <div>
     <button
-      onclick="showedBox === 'cart' ? deleteAllCartItems : deleteAllFavorites"
+      :onclick="
+        showedBox === 'cart'
+          ? () => deleteAllCartItems()
+          : () => deleteAllFavorites()
+      "
     >
       clear
     </button>
@@ -88,7 +65,7 @@ defineProps({
     />
     <div v-if="showedBox === 'cart'">
       <TotalPrice :totalPrice="totalPrice" />
-      <button onclick="handleSubmit">submit</button>
+      <button :onclick="() => handleSubmit()">submit</button>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   location: {
-    type: 'menuBox' || 'checkout',
+    type: String,
     required: false,
   },
   totalPrice: {

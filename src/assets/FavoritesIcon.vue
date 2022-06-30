@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   location: {
-    type: 'navbar' || 'card',
+    type: String,
     required: true,
   },
   active: {

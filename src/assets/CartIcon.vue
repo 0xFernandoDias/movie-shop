@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   location: {
-    type: 'navbar' || 'menuBox',
+    type: String,
     required: true,
   },
 })

@@ -14,7 +14,7 @@ defineProps({
 <template>
   <div>
     Hello {{ userName }}
-    <button onclick="handleClick">ok</button>
+    <button :onclick="() => handleClick()">ok</button>
   </div>
 </template>
 

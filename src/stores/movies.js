@@ -46,48 +46,52 @@ export const useMoviesStore = defineStore({
           return movie
         }
       })
-      cart.reduce((acc, movie) => {
+      return cart.reduce((acc, movie) => {
         return acc + movie.price
       }, 0)
     },
   },
   actions: {
-    addToCart: (movieTitle) => {
+    addToCart(movieTitle) {
       this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isInCart = true
         }
+        return
       })
     },
-    addToFavorites: (movieTitle) => {
+    addToFavorites(movieTitle) {
       this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isFavorite = true
         }
+        return
       })
     },
-    deleteAllCartItems: () => {
+    deleteAllCartItems() {
       this.movies.forEach((movie) => {
         movie.isInCart = false
       })
     },
-    deleteAllFavorites: () => {
+    deleteAllFavorites() {
       this.movies.forEach((movie) => {
         movie.isFavorite = false
       })
     },
-    deleteCartItem: (movieTitle) => {
+    deleteCartItem(movieTitle) {
       this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isInCart = false
         }
+        return
       })
     },
-    deleteFavorite: (movieTitle) => {
+    deleteFavorite(movieTitle) {
       this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {
           movie.isFavorite = false
         }
+        return
       })
     },
     async fetchMovies() {
@@ -95,7 +99,7 @@ export const useMoviesStore = defineStore({
         const {
           data: { results },
         } = await axios.get(
-          'https://api.themoviedb.org/3/trending/all/week?api_key=fcfb42d19d2736ff4b22eece67b604ac&language=en-US'
+          'https://api.themoviedb.org/3/trending/movie/week?api_key=fcfb42d19d2736ff4b22eece67b604ac&language=en-US'
         )
 
         const moviesWithAdditionalProps = results.map((obj) => ({

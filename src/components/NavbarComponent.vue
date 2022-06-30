@@ -29,10 +29,10 @@ defineProps({
         :value="searchInput"
       />
     </form>
-    <button onclick="handleNavbarIconsClick('favorites')">
+    <button :onclick="() => handleNavbarIconsClick('favorites')">
       {{ favoritesQuantity }}
     </button>
-    <button onclick="handleNavbarIconsClick('cart')">
+    <button :onclick="() => handleNavbarIconsClick('cart')">
       {{ cartItemsQuantity }}
     </button>
   </div>

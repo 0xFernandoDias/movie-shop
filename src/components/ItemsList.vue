@@ -1,26 +1,11 @@
 <script setup>
 defineProps({
   location: {
-    type: 'favorites' || 'cart' || 'checkout',
+    type: String,
     required: true,
   },
   movies: {
-    type: [
-      {
-        posterPath: {
-          type: String,
-          required: true,
-        },
-        title: {
-          type: String,
-          required: true,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
-      },
-    ],
+    type: Array,
     required: true,
   },
   addToCart: {
@@ -44,8 +29,8 @@ defineProps({
       <image :src="`https://image.tmdb.org/t/p/original/${movie.posterPath}`" />
       {{ movie.title }}
       {{ movie.price }}
-      <button onclick="addToCart(movie.movieTitle)">add to cart</button>
-      <button onclick="deleteFavorite(movie.movieTitle)">
+      <button :onclick="() => addToCart(movie.movieTitle)">add to cart</button>
+      <button :onclick="() => deleteFavorite(movie.movieTitle)">
         delete favorite
       </button>
     </li>
@@ -56,7 +41,7 @@ defineProps({
       {{ movie.title }}
       1
       {{ movie.price }}
-      <button onclick="deleteCartItem(movie.movieTitle)">
+      <button :onclick="() => deleteCartItem(movie.movieTitle)">
         delete cart item
       </button>
     </li>
@@ -67,7 +52,7 @@ defineProps({
       {{ movie.title }}
       1
       {{ movie.price }}
-      <button onclick="deleteCartItem(movie.movieTitle)">
+      <button :onclick="() => deleteCartItem(movie.movieTitle)">
         delete cart item
       </button>
       <hr />

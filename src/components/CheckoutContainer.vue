@@ -4,27 +4,7 @@ import TotalPrice from './TotalPrice.vue'
 
 defineProps({
   movies: {
-    type: [
-      {
-        posterPath: {
-          type: String,
-          required: true,
-        },
-        title: {
-          type: String,
-          required: true,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
-        quantity: {
-          // 1
-          type: Number,
-          required: true,
-        },
-      },
-    ],
+    type: Array,
     required: true,
   },
   deleteCartItem: {
@@ -50,7 +30,7 @@ defineProps({
       :deleteCartItem="deleteCartItem"
     />
     <TotalPrice :totalPrice="totalPrice" />
-    <button onclick="handleSubmit">submit</button>
+    <button :onclick="() => handleSubmit()">submit</button>
   </div>
 </template>
 
