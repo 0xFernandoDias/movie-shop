@@ -1,13 +1,18 @@
 <script setup>
+import { computed } from 'vue'
+import { useMoviesStore } from '../stores/movies'
+
+const store = useMoviesStore()
+
 defineProps({
   location: {
     type: String,
     required: false,
   },
-  totalPrice: {
-    type: Number,
-    required: false,
-  },
+})
+
+const totalPrice = computed(() => {
+  return store.getTotalPrice
 })
 </script>
 

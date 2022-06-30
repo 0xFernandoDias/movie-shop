@@ -11,7 +11,7 @@ export const useUserRegisterStore = defineStore({
   },
   actions: {
     resetUserRegister: () => {
-      this.state.userRegister = {}
+      this.userRegister = {}
     },
   },
 })

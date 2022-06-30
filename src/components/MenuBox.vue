@@ -1,55 +1,35 @@
 <script setup>
+import { computed } from 'vue'
+import { useMoviesStore } from '../stores/movies'
+import { useAppDataStore } from '../stores/appData'
+
 import TotalPrice from './TotalPrice.vue'
 import ItemsList from './ItemsList.vue'
-defineProps({
-  showedBox: {
-    type: String,
-    required: true,
-  },
-  favorites: {
-    type: Array,
-    required: false,
-  },
-  cart: {
-    type: Array,
-    required: false,
-  },
-  totalPrice: {
-    type: Number,
-    required: false,
-  },
-  deleteAllFavorites: {
-    type: Function,
-    required: true,
-  },
-  deleteAllCartItems: {
-    type: Function,
-    required: true,
-  },
-  deleteCartItem: {
-    type: Function,
-    required: true,
-  },
-  deleteFavorite: {
-    type: Function,
-    required: true,
-  },
-  addToCart: {
-    type: Function,
-    required: true,
-  },
-  handleSubmit: {
-    type: Function,
-    required: true,
-  },
+
+const moviesStore = useMoviesStore()
+const appDataStore = useAppDataStore()
+
+const favorites = computed(() => {
+  return moviesStore.getFavorites
 })
+const cart = computed(() => {
+  return moviesStore.getCart
+})
+
+const deleteAllFavorites = () => moviesStore.deleteAllFavorites()
+const deleteAllCartItems = () => moviesStore.deleteAllCartItems()
+
+function handleMenuBoxSubmit() {
+  // router.push({ name: 'checkout' })
+  // validations
+}
 </script>
 
 <template>
   <div>
     <button
       :onclick="
-        showedBox === 'cart'
+        appDataStore.menuBox === 'cart'
           ? () => deleteAllCartItems()
           : () => deleteAllFavorites()
       "
@@ -57,15 +37,12 @@ defineProps({
       clear
     </button>
     <ItemsList
-      :location="showedBox"
-      :movies="showedBox === 'cart' ? cart : favorites"
-      :addToCart="addToCart"
-      :deleteFavorite="deleteFavorite"
-      :deleteCartItem="deleteCartItem"
+      :location="appDataStore.menuBox"
+      :movies="appDataStore.menuBox === 'cart' ? cart : favorites"
     />
-    <div v-if="showedBox === 'cart'">
-      <TotalPrice :totalPrice="totalPrice" />
-      <button :onclick="() => handleSubmit()">submit</button>
+    <div v-show="appDataStore.menuBox === 'cart'">
+      <TotalPrice />
+      <button :onclick="() => handleMenuBoxSubmit()">submit</button>
     </div>
   </div>
 </template>

@@ -10,9 +10,6 @@ defineProps({
     required: true,
   },
 })
-
-const addToCart = (movieTitle) => store.addToCart(movieTitle)
-const deleteCartItem = (movieTitle) => store.deleteCartItem(movieTitle)
 </script>
 
 <template>
@@ -37,8 +34,8 @@ const deleteCartItem = (movieTitle) => store.deleteCartItem(movieTitle)
       :color="movie.isInCart ? 'red-500' : 'indigo-600'"
       :onClick="
         movie.isInCart
-          ? () => deleteCartItem(movie.title)
-          : () => addToCart(movie.title)
+          ? () => store.deleteCartItem(movie.title)
+          : () => store.addToCart(movie.title)
       "
     />
   </div>

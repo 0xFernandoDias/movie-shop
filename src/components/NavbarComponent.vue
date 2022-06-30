@@ -1,41 +1,64 @@
 <script setup>
-defineProps({
-  searchInput: {
-    type: String,
-    required: false,
-  },
-  favoritesQuantity: {
-    type: Number,
-    required: false,
-  },
-  cartItemsQuantity: {
-    type: Number,
-    required: false,
-  },
-  handleNavbarIconsClick: {
-    type: Function,
-    required: true,
-  },
+import { computed } from 'vue'
+import { useMoviesStore } from '../stores/movies'
+import { useAppDataStore } from '../stores/appData'
+
+import LogoIcon from '../assets/LogoIcon.vue'
+import SearchIcon from '../assets/SearchIcon.vue'
+import FavoritesIcon from '../assets/FavoritesIcon.vue'
+import CartIcon from '../assets/CartIcon.vue'
+
+const moviesStore = useMoviesStore()
+const appDataStore = useAppDataStore()
+
+const favoritesQuantity = computed(() => {
+  return moviesStore.getFavoritesQuantity
 })
+const cartItemsQuantity = computed(() => {
+  return moviesStore.getCartItemsQuantity
+})
+
+function handleNavbarIconsClick(icon) {
+  if (icon === 'favorites') {
+    appDataStore.menuBox = 'favorites'
+  } else if (icon === 'cart') {
+    appDataStore.menuBox = 'cart'
+  } else {
+    appDataStore.menuBox = 'none'
+  }
+}
 </script>
 
 <template>
-  <div>
-    <form>
+  <div class="row">
+    <LogoIcon />
+    <form class="space between">
       <input
         type="text"
-        :id="searchInput"
-        :name="searchInput"
-        :value="searchInput"
+        :id="appDataStore.searchInput"
+        :name="appDataStore.searchInput"
+        :value="appDataStore.searchInput"
+        placeholder="Search"
       />
+      <SearchIcon />
     </form>
-    <button :onclick="() => handleNavbarIconsClick('favorites')">
-      {{ favoritesQuantity }}
-    </button>
-    <button :onclick="() => handleNavbarIconsClick('cart')">
-      {{ cartItemsQuantity }}
-    </button>
+
+    <div
+      class="column"
+      as="button"
+      :onclick="() => handleNavbarIconsClick('favorites')"
+    >
+      <div class="quantity">{{ favoritesQuantity }}</div>
+      <FavoritesIcon :location="'navbar'" />
+    </div>
+
+    <div
+      class="column"
+      as="button"
+      :onclick="() => handleNavbarIconsClick('cart')"
+    >
+      <div class="quantity">{{ cartItemsQuantity }}</div>
+      <CartIcon :location="'navbar'" :active="false" />
+    </div>
   </div>
 </template>
-
-<style scoped></style>
