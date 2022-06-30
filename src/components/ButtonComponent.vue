@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <button :class="`bg-${color}`" onclick="onClick">{{ text }}</button>
 </template>
 
 <style scoped></style>

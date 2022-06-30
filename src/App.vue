@@ -1,38 +1,37 @@
 <script setup>
-/* eslint-disable no-unused-vars */
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, computed } from 'vue'
 import { RouterView } from 'vue-router'
 import { useMoviesStore } from '../src/stores/movies'
-import { useUserRegisterStore } from '../src/stores/userRegister'
-import { isInCart, isInFavorites } from '../src/hooks'
-import {
-  handleNavbarIconsClick,
-  handleMenuBoxSubmit,
-  handleCheckoutSubmit,
-  handleModalSubmit,
-} from '../src/helpers'
+import { handleNavbarIconsClick, handleMenuBoxSubmit } from '../src/helpers'
+import NavbarComponent from './components/NavbarComponent.vue'
+import MenuBox from './components/MenuBox.vue'
 
-const {
-  getMovies,
-  getCart,
-  getFavorites,
-  getCartItemsQuantity,
-  getFavoritesQuantity,
-  getTotalPrice,
-  addToCart,
-  addToFavorites,
-  deleteAllCartItems,
-  deleteAllFavorites,
-  deleteCartItem,
-  deleteFavorite,
-  fetchMovies,
-} = useMoviesStore()
-
-const { getUserName, resetUserRegister } = useUserRegisterStore
+const store = useMoviesStore()
 
 onMounted(() => {
-  fetchMovies()
+  store.fetchMovies()
 })
+
+const favoritesQuantity = computed(() => {
+  return store.getFavoritesQuantity
+})
+const cartItemsQuantity = computed(() => {
+  return store.getCartItemsQuantity
+})
+const favorites = computed(() => {
+  return store.getFavorites
+})
+const cart = computed(() => {
+  return store.getCart
+})
+const totalPrice = computed(() => {
+  return store.getTotalPrice
+})
+const deleteAllFavorites = () => store.deleteAllFavorites()
+const deleteAllCartItems = () => store.deleteAllCartItems()
+const deleteFavorite = (movieTitle) => store.deleteFavorite(movieTitle)
+const deleteCartItem = (movieTitle) => store.deleteCartItem(movieTitle)
+const addToCart = (movieTitle) => store.addToCart(movieTitle)
 
 const state = reactive({
   menuBox: 'none',
@@ -42,16 +41,23 @@ const state = reactive({
 </script>
 
 <template>
+  <NavbarComponent
+    :searchInput="state.searchInput"
+    :favoritesQuantity="favoritesQuantity"
+    :cartItemsQuantity="cartItemsQuantity"
+    :handleNavbarIconsClick="handleNavbarIconsClick"
+  />
+  <MenuBox
+    :showedBox="state.menuBox"
+    :favorites="favorites"
+    :cart="cart"
+    :totalPrice="totalPrice"
+    :deleteAllFavorites="deleteAllFavorites"
+    :deleteAllCartItems="deleteAllCartItems"
+    :deleteFavorite="deleteFavorite"
+    :deleteCartItem="deleteCartItem"
+    :addToCart="addToCart"
+    :handleSubmit="handleMenuBoxSubmit"
+  />
   <RouterView />
-
-  <ul>
-    <li v-for="movie in getMovies" :key="movie.title">
-      {{ movie.title }}
-      {{ movie.release_date }}
-      {{ movie.vote_average }}
-      {{ movie.media_type }}
-      {{ movie.price }}
-      {{ movie.poster_path }}
-    </li>
-  </ul>
 </template>

@@ -1,38 +1,12 @@
 <script setup>
+import TotalPrice from './TotalPrice.vue'
 defineProps({
   showedBox: {
     type: 'none' || 'favorites' || 'cart',
     required: true,
   },
   favorites: {
-    type: [
-      {
-        posterPath: {
-          type: String,
-          required: true,
-        },
-        releaseDate: {
-          type: String,
-          required: true,
-        },
-        title: {
-          type: String,
-          required: true,
-        },
-        voteAverage: {
-          type: Number,
-          required: true,
-        },
-        mediaType: {
-          type: String,
-          required: true,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
-      },
-    ],
+    type: Array,
     required: false,
   },
   cart: {
@@ -79,6 +53,18 @@ defineProps({
     type: Function,
     required: true,
   },
+  deleteCartItem: {
+    type: Function,
+    required: true,
+  },
+  deleteFavorite: {
+    type: Function,
+    required: true,
+  },
+  addToCart: {
+    type: Function,
+    required: true,
+  },
   handleSubmit: {
     type: Function,
     required: true,
@@ -87,7 +73,24 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <div>
+    <button
+      onclick="showedBox === 'cart' ? deleteAllCartItems : deleteAllFavorites"
+    >
+      clear
+    </button>
+    <ItemsList
+      :location="showedBox"
+      :movies="showedBox === 'cart' ? cart : favorites"
+      :addToCart="addToCart"
+      :deleteFavorite="deleteFavorite"
+      :deleteCartItem="deleteCartItem"
+    />
+    <div v-if="showedBox === 'cart'">
+      <TotalPrice :totalPrice="totalPrice" />
+      <button onclick="handleSubmit">submit</button>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>

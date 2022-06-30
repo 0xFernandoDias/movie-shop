@@ -1,3 +1,5 @@
+<!-- Gotta pass it up -->
+
 <script setup>
 defineProps({
   userRegister: {
@@ -13,7 +15,6 @@ defineProps({
     },
     required: true,
   },
-  isEverythingOk: { type: Boolean, required: true },
 })
 </script>
 

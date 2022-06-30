@@ -1,4 +1,4 @@
-import { router } from 'vue-router'
+// import { router } from 'vue-router'
 
 export function handleNavbarIconsClick(icon) {
   if (icon === 'favorites') {
@@ -10,7 +10,7 @@ export function handleNavbarIconsClick(icon) {
   }
 }
 export function handleMenuBoxSubmit() {
-  router.push({ name: 'checkout' })
+  // router.push({ name: 'checkout' })
   // validations
 }
 export function handleCheckoutSubmit() {
@@ -25,5 +25,5 @@ export function handleModalSubmit(
   deleteAllCartItems()
   deleteAllFavorites()
   resetUserRegister()
-  router.push({ name: '/' })
+  // router.push({ name: '/' })
 }

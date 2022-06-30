@@ -6,6 +6,7 @@ export const useUserRegisterStore = defineStore({
     userRegister: {},
   }),
   getters: {
+    getUserRegister: (state) => state.useUserRegister,
     getUserName: (state) => state.userRegister.name,
   },
   actions: {

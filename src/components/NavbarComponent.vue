@@ -20,7 +20,22 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <div>
+    <form>
+      <input
+        type="text"
+        :id="searchInput"
+        :name="searchInput"
+        :value="searchInput"
+      />
+    </form>
+    <button onclick="handleNavbarIconsClick('favorites')">
+      {{ favoritesQuantity }}
+    </button>
+    <button onclick="handleNavbarIconsClick('cart')">
+      {{ cartItemsQuantity }}
+    </button>
+  </div>
 </template>
 
 <style scoped></style>

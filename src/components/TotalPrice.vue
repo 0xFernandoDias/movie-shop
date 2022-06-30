@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <div>Total: {{ totalPrice }}</div>
 </template>
 
 <style scoped></style>

@@ -1,4 +1,7 @@
 <script setup>
+import ItemsList from './ItemsList.vue'
+import TotalPrice from './TotalPrice.vue'
+
 defineProps({
   movies: {
     type: [
@@ -40,7 +43,15 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <div>
+    <ItemsList
+      :location="'checkout'"
+      :movies="movies"
+      :deleteCartItem="deleteCartItem"
+    />
+    <TotalPrice :totalPrice="totalPrice" />
+    <button onclick="handleSubmit">submit</button>
+  </div>
 </template>
 
 <style scoped></style>

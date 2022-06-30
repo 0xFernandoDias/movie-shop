@@ -1,4 +1,5 @@
 <script setup>
+import ButtonComponent from './ButtonComponent.vue'
 defineProps({
   isInCart: {
     type: Boolean,
@@ -56,7 +57,22 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <div>
+    <button onclick="!isInFavorites ? addToFavorites : deleteFavorite">
+      {{ !isInFavorites ? 'Add To Favorites' : 'Delete Favorite' }}
+    </button>
+    {{ movie.title }}
+    {{ movie.release_date }}
+    {{ movie.vote_average }}
+    {{ movie.media_type }}
+    {{ movie.price }}
+    {{ movie.poster_path }}
+    <ButtonComponent
+      :text="isInCart ? 'Add' : 'Remove'"
+      :color="isInCart ? 'red-500' : 'indigo-600'"
+      :onClick="isInCart ? deleteCartItem : addToCart"
+    />
+  </div>
 </template>
 
 <style scoped></style>

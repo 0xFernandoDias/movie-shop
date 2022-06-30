@@ -12,7 +12,10 @@ defineProps({
 </script>
 
 <template>
-  <div></div>
+  <div>
+    Hello {{ userName }}
+    <button onclick="handleClick">ok</button>
+  </div>
 </template>
 
 <style scoped></style>
