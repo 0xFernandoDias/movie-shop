@@ -5,9 +5,15 @@ export const useMoviesStore = defineStore({
   id: 'movies',
   state: () => ({
     movies: [],
+    searchInput: '',
   }),
   getters: {
     getMovies: (state) => state.movies,
+    getFilteredMovies(state) {
+      return state.movies.filter((movie) =>
+        movie.title.match(state.searchInput)
+      )
+    },
     getCart: (state) => {
       let cart = state.movies.filter((movie) => {
         if (movie.isInCart) {

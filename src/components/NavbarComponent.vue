@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
 
@@ -10,13 +9,6 @@ import CartIcon from '../assets/CartIcon.vue'
 
 const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
-
-const favoritesQuantity = computed(() => {
-  return moviesStore.getFavoritesQuantity
-})
-const cartItemsQuantity = computed(() => {
-  return moviesStore.getCartItemsQuantity
-})
 
 function handleNavbarIconsClick(icon) {
   if (icon === 'favorites') {
@@ -35,9 +27,7 @@ function handleNavbarIconsClick(icon) {
     <form class="space between">
       <input
         type="text"
-        :id="appDataStore.searchInput"
-        :name="appDataStore.searchInput"
-        :value="appDataStore.searchInput"
+        v-model="moviesStore.searchInput"
         placeholder="Search"
       />
       <SearchIcon />
@@ -48,7 +38,7 @@ function handleNavbarIconsClick(icon) {
       as="button"
       :onclick="() => handleNavbarIconsClick('favorites')"
     >
-      <div class="quantity">{{ favoritesQuantity }}</div>
+      <div class="quantity">{{ moviesStore.getFavoritesQuantity }}</div>
       <FavoritesIcon :location="'navbar'" />
     </div>
 
@@ -57,7 +47,7 @@ function handleNavbarIconsClick(icon) {
       as="button"
       :onclick="() => handleNavbarIconsClick('cart')"
     >
-      <div class="quantity">{{ cartItemsQuantity }}</div>
+      <div class="quantity">{{ moviesStore.getCartItemsQuantity }}</div>
       <CartIcon :location="'navbar'" :active="false" />
     </div>
   </div>

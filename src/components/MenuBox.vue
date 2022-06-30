@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
 
@@ -8,13 +7,6 @@ import ItemsList from './ItemsList.vue'
 
 const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
-
-const favorites = computed(() => {
-  return moviesStore.getFavorites
-})
-const cart = computed(() => {
-  return moviesStore.getCart
-})
 
 const deleteAllFavorites = () => moviesStore.deleteAllFavorites()
 const deleteAllCartItems = () => moviesStore.deleteAllCartItems()
@@ -38,7 +30,11 @@ function handleMenuBoxSubmit() {
     </button>
     <ItemsList
       :location="appDataStore.menuBox"
-      :movies="appDataStore.menuBox === 'cart' ? cart : favorites"
+      :movies="
+        appDataStore.menuBox === 'cart'
+          ? moviesStore.getCart
+          : moviesStore.getFavorites
+      "
     />
     <div v-show="appDataStore.menuBox === 'cart'">
       <TotalPrice />

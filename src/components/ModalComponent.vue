@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import { useUserRegisterStore } from '../stores/userRegister'
 import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
@@ -7,10 +6,6 @@ import { useAppDataStore } from '../stores/appData'
 const userRegisterStore = useUserRegisterStore()
 const moviesStore = useMoviesStore()
 const appDataStore = useAppDataStore()
-
-const userName = computed(() => {
-  return userRegisterStore.getUserName
-})
 
 function handleModalSubmit() {
   moviesStore.deleteAllCartItems()
@@ -23,7 +18,7 @@ function handleModalSubmit() {
 
 <template>
   <div>
-    Hello {{ userName }}
+    Hello {{ userRegisterStore.getUserName }}
     <button :onclick="() => handleModalSubmit()">ok</button>
   </div>
 </template>

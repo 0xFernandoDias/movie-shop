@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import { useMoviesStore } from '../stores/movies'
 
 const store = useMoviesStore()
@@ -10,14 +9,10 @@ defineProps({
     required: false,
   },
 })
-
-const totalPrice = computed(() => {
-  return store.getTotalPrice
-})
 </script>
 
 <template>
-  <div>Total: {{ totalPrice }}</div>
+  <div>Total: {{ store.getTotalPrice }}</div>
 </template>
 
 <style scoped></style>

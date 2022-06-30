@@ -2,9 +2,12 @@
 
 <script setup>
 import { useUserRegisterStore } from '../stores/userRegister'
+import { useAppDataStore } from '../stores/appData'
 
 // eslint-disable-next-line no-unused-vars
-const store = useUserRegisterStore()
+const userRegisterStore = useUserRegisterStore()
+// eslint-disable-next-line no-unused-vars
+const appDataStore = useAppDataStore()
 </script>
 
 <template>
