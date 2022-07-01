@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 export const useAppDataStore = defineStore({
   id: 'appData',
   state: () => ({
-    menuBox: 'none',
+    isFavoritesVisible: false,
+    isCartVisible: false,
     showModal: false,
     formsOkay: false,
   }),

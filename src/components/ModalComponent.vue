@@ -26,5 +26,3 @@ function handleModalSubmit() {
     >
   </div>
 </template>
-
-<style scoped></style>

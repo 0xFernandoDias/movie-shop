@@ -1,12 +1,7 @@
 <script setup>
 defineProps({
-  location: {
+  color: {
     type: String,
-    required: true,
-  },
-  // active
-  active: {
-    type: Boolean,
     required: false,
   },
 })
@@ -16,6 +11,6 @@ defineProps({
   <font-awesome-icon
     icon="fa-solid fa-heart"
     class="fa-2xl"
-    :style="location === 'navbar' ? { color: '#f9fafb' } : { color: '#0f172a' }"
+    :style="{ color }"
   />
 </template>

@@ -16,7 +16,7 @@ defineProps({
 
 <template>
   <div
-    class="w-64 flex flex-col outline outline-1 outline-gray-400 mb-16 pb-4 justify-between mx-1"
+    class="w-64 flex flex-col outline outline-2 outline-gray-400 mb-16 justify-between"
   >
     <div
       class="flex flex-col justify-between h-96 border-b-2 border-b-gray-400"
@@ -29,8 +29,7 @@ defineProps({
       <div class="flex flex-row justify-end px-4 py-4">
         <FavoritesIcon
           as="button"
-          :location="'cart'"
-          :active="movie.isFavorite ? true : false"
+          :color="movie.isFavorite ? '#ef4444' : '#111827'"
           :onclick="
             !movie.isFavorite
               ? () => moviesStore.addToFavorites(movie.title)
@@ -65,7 +64,7 @@ defineProps({
     </div>
     <ButtonComponent
       :text="movie.isInCart ? 'Remove to cart' : 'Add to cart'"
-      :color="movie.isInCart ? 'red-500' : 'indigo-600'"
+      :color="movie.isInCart ? 'bg-red-500' : 'bg-indigo-600'"
       :onClick="
         movie.isInCart
           ? () => moviesStore.deleteCartItem(movie.title)

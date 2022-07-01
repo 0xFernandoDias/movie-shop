@@ -16,5 +16,11 @@ defineProps({
 </script>
 
 <template>
-  <button :class="`bg-${color}`" :onclick="() => onClick()">{{ text }}</button>
+  <button
+    as="div"
+    :class="`${color} h-12 text-gray-50`"
+    :onclick="() => onClick()"
+  >
+    <b>{{ text }}</b>
+  </button>
 </template>

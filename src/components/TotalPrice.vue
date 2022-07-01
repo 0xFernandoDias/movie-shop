@@ -5,7 +5,15 @@ const moviesStore = useMoviesStore()
 </script>
 
 <template>
-  <div class="row">
-    <span>Total: </span> <span>{{ moviesStore.getTotalPrice }}</span>
+  <div class="flex flex-row justify-between">
+    <span>Total: </span>
+    <span
+      ><b>{{
+        new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        }).format(moviesStore.getTotalPrice)
+      }}</b></span
+    >
   </div>
 </template>

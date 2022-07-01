@@ -8,32 +8,22 @@ import CartIcon from '../assets/CartIcon.vue'
 
 const appDataStore = useAppDataStore()
 const moviesStore = useMoviesStore()
-
-function handleNavbarIconsClick(icon) {
-  if (icon === 'favorites') {
-    appDataStore.menuBox = 'favorites'
-  } else if (icon === 'cart') {
-    appDataStore.menuBox = 'cart'
-  } else {
-    appDataStore.menuBox = 'none'
-  }
-}
 </script>
 
 <template>
   <nav
-    class="w-full flex flex-row px-8 py-0 bg-teal-200 justify-between items-center"
+    class="w-full flex flex-row px-8 py-1 bg-teal-200 justify-between items-center"
   >
     <LogoIcon />
     <form
-      class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400"
+      class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400 mx-4"
     >
       <input
         type="text"
         v-model="moviesStore.searchInput"
         placeholder="Search"
         style="outline: 0"
-        class="w-56 mx-2 bg-gray-50"
+        class="w-24 bg-gray-50"
       />
       <SearchIcon />
     </form>
@@ -41,7 +31,10 @@ function handleNavbarIconsClick(icon) {
       <button
         class="flex flex-col"
         as="div"
-        :onclick="() => handleNavbarIconsClick('favorites')"
+        :onclick="
+          () =>
+            (appDataStore.isFavoritesVisible = !appDataStore.isFavoritesVisible)
+        "
       >
         <div class="flex flex-row justify-end w-full relative top-3">
           <div
@@ -50,13 +43,15 @@ function handleNavbarIconsClick(icon) {
             <b>{{ moviesStore.getFavoritesQuantity }}</b>
           </div>
         </div>
-        <FavoritesIcon :location="'navbar'" :active="false" />
+        <FavoritesIcon :color="'#f9fafb'" />
       </button>
 
       <button
         class="flex flex-col"
         as="div"
-        :onclick="() => handleNavbarIconsClick('cart')"
+        :onclick="
+          () => (appDataStore.isCartVisible = !appDataStore.isCartVisible)
+        "
       >
         <div class="flex flex-row justify-end w-full relative top-3">
           <div

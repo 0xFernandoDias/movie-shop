@@ -7,7 +7,8 @@ import { useMoviesStore } from '../src/stores/movies'
 import { useUserRegisterStore } from '../src/stores/userRegister'
 
 import NavbarComponent from './components/NavbarComponent.vue'
-import MenuBox from './components/MenuBox.vue'
+import FavoritesBox from './components/FavoritesBox.vue'
+import CartBox from './components/CartBox.vue'
 
 const appDataStore = useAppDataStore()
 const moviesStore = useMoviesStore()
@@ -19,13 +20,22 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col box-border justify-center p-0 m-0">
-    <NavbarComponent />
-    <MenuBox
-      v-show="
-        appDataStore.menuBox === 'favorites' || appDataStore.menuBox === 'cart'
-      "
-    />
+  <div class="w-full flex flex-col box-border p-0 m-0">
+    <div class="flex fixed w-full">
+      <NavbarComponent />
+    </div>
+    <div
+      v-if="appDataStore.isFavoritesVisible"
+      class="flex flex-row-reverse w-full absolute top-20"
+    >
+      <FavoritesBox />
+    </div>
+    <div
+      v-if="appDataStore.isCartVisible"
+      class="flex flex-row-reverse w-full absolute top-20"
+    >
+      <CartBox />
+    </div>
     <RouterView />
   </div>
 </template>
