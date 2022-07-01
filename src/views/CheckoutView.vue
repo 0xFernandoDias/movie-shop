@@ -9,14 +9,16 @@ const appDataStore = useAppDataStore()
 </script>
 
 <template>
-  <main class="column">
-    <h1>Checkout</h1>
-    <div class="row">
-      <FormsContainer />
-      <CheckoutContainer />
-      <div v-show="appDataStore.showModal">
-        <ModalComponent />
+  <div class="h-full">
+    <main class="w-full flex flex-col flex-wrap px-32 py-32 gap-12">
+      <h1>Checkout</h1>
+      <div class="flex flex-row justify-between">
+        <FormsContainer />
+        <CheckoutContainer />
       </div>
+    </main>
+    <div v-show="appDataStore.showModal">
+      <ModalComponent />
     </div>
-  </main>
+  </div>
 </template>

@@ -10,36 +10,100 @@ const userRegisterStore = useUserRegisterStore()
 </script>
 
 <template>
-  <div class="column">
-    <input type="text" v-model="userRegisterStore.name" placeholder="Name" />
-    <div class="row">
-      <input type="text" v-model="userRegisterStore.cpf" placeholder="CPF" />
-      <input type="tel" v-model="userRegisterStore.phone" placeholder="Phone" />
+  <div class="flex flex-col w-[40%] gap-8">
+    <form
+      class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400"
+    >
+      <input
+        type="text"
+        style="outline: 0"
+        class="w-full bg-gray-50"
+        v-model="userRegisterStore.name"
+        placeholder="Name"
+      />
+    </form>
+    <div class="flex flex-row justify-between">
+      <form
+        class="flex flex-row bg-gray-50 w-[45%] h-10 items-center px-2 rounded border-2 border-gray-400"
+      >
+        <input
+          type="text"
+          style="outline: 0"
+          class="w-full bg-gray-50"
+          v-model="userRegisterStore.cpf"
+          placeholder="CPF"
+        />
+      </form>
+      <form
+        class="flex flex-row bg-gray-50 w-[45%] h-10 items-center px-2 rounded border-2 border-gray-400"
+      >
+        <input
+          type="tel"
+          style="outline: 0"
+          class="w-full bg-gray-50"
+          v-model="userRegisterStore.phone"
+          placeholder="Phone"
+        />
+      </form>
     </div>
-    <input
-      type="email"
-      v-model="userRegisterStore.email"
-      placeholder="E-mail"
-    />
-    <div class="row">
+    <form
+      class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400"
+    >
       <input
-        type="text"
-        v-model="userRegisterStore.zip"
-        placeholder="Zip Code"
+        type="email"
+        style="outline: 0"
+        class="w-full bg-gray-50"
+        v-model="userRegisterStore.email"
+        placeholder="E-mail"
       />
-      <input
-        type="text"
-        v-model="userRegisterStore.address"
-        placeholder="Address"
-      />
+    </form>
+    <div class="flex flex-row justify-between">
+      <form
+        class="flex flex-row bg-gray-50 w-[45%] h-10 items-center px-2 rounded border-2 border-gray-400"
+      >
+        <input
+          type="text"
+          style="outline: 0"
+          class="w-full bg-gray-50"
+          v-model="userRegisterStore.zip"
+          placeholder="Zip Code"
+        />
+      </form>
+      <form
+        class="flex flex-row bg-gray-50 w-[45%] h-10 items-center px-2 rounded border-2 border-gray-400"
+      >
+        <input
+          type="text"
+          style="outline: 0"
+          class="w-full bg-gray-50"
+          v-model="userRegisterStore.address"
+          placeholder="Address"
+        />
+      </form>
     </div>
-    <div class="row">
-      <input type="text" v-model="userRegisterStore.city" placeholder="City" />
-      <input
-        type="text"
-        v-model="userRegisterStore.state"
-        placeholder="State"
-      />
+    <div class="flex flex-row justify-between">
+      <form
+        class="flex flex-row bg-gray-50 h-10 w-[45%] items-center px-2 rounded border-2 border-gray-400"
+      >
+        <input
+          type="text"
+          style="outline: 0"
+          class="w-full bg-gray-50"
+          v-model="userRegisterStore.city"
+          placeholder="City"
+        />
+      </form>
+      <form
+        class="flex flex-row bg-gray-50 h-10 w-[45%] items-center px-2 rounded border-2 border-gray-400"
+      >
+        <input
+          type="text"
+          style="outline: 0"
+          class="w-full bg-gray-50"
+          v-model="userRegisterStore.state"
+          placeholder="State"
+        />
+      </form>
     </div>
   </div>
 </template>

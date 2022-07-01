@@ -5,11 +5,6 @@ import TotalPrice from './TotalPrice.vue'
 import ButtonComponent from './ButtonComponent.vue'
 
 const moviesStore = useMoviesStore()
-
-function handleMenuBoxSubmit() {
-  // router.push({ name: 'checkout' })
-  // validations
-}
 </script>
 
 <template>
@@ -64,7 +59,7 @@ function handleMenuBoxSubmit() {
       <ButtonComponent
         :text="'Checkout'"
         :color="'bg-indigo-600'"
-        :onclick="() => handleMenuBoxSubmit()"
+        :onClick="() => $router.push({ path: '/checkout' })"
       />
     </div>
   </div>

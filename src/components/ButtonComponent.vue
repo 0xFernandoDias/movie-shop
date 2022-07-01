@@ -18,7 +18,7 @@ defineProps({
 <template>
   <button
     as="div"
-    :class="`${color} h-12 text-gray-50`"
+    :class="`${color} h-12 text-gray-50 rounded`"
     :onclick="() => onClick()"
   >
     <b>{{ text }}</b>
