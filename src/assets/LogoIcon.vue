@@ -2,11 +2,11 @@
   <div
     as="button"
     class="cursor-pointer"
-    :onClick="() => $router.push({ path: '/' })"
+    :onclick="() => $router.push({ path: '/' })"
   >
     <font-awesome-icon
       icon="fa-solid fa-couch"
-      class="fa-2xl"
+      :class="'fa-2xl hover:opacity-80'"
       style="color: #f9fafb"
     />
   </div>

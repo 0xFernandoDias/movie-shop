@@ -6,8 +6,8 @@ const moviesStore = useMoviesStore()
 
 <template>
   <div class="flex flex-row justify-between">
-    <span>Total: </span>
-    <span
+    <span class="text-lg">Total: </span>
+    <span class="text-xl"
       ><b>{{
         new Intl.NumberFormat('en-US', {
           style: 'currency',

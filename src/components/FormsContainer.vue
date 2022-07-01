@@ -1,10 +1,5 @@
 <script setup>
-import { useAppDataStore } from '../stores/appData'
 import { useUserRegisterStore } from '../stores/userRegister'
-
-// eslint-disable-next-line no-unused-vars
-const appDataStore = useAppDataStore()
-// formsOkay
 
 const userRegisterStore = useUserRegisterStore()
 </script>
@@ -17,7 +12,7 @@ const userRegisterStore = useUserRegisterStore()
       <input
         type="text"
         style="outline: 0"
-        class="w-full bg-gray-50"
+        class="w-full bg-gray-50 text-lg"
         v-model="userRegisterStore.name"
         placeholder="Name"
       />
@@ -29,7 +24,7 @@ const userRegisterStore = useUserRegisterStore()
         <input
           type="text"
           style="outline: 0"
-          class="w-full bg-gray-50"
+          class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.cpf"
           placeholder="CPF"
         />
@@ -40,7 +35,7 @@ const userRegisterStore = useUserRegisterStore()
         <input
           type="tel"
           style="outline: 0"
-          class="w-full bg-gray-50"
+          class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.phone"
           placeholder="Phone"
         />
@@ -52,7 +47,7 @@ const userRegisterStore = useUserRegisterStore()
       <input
         type="email"
         style="outline: 0"
-        class="w-full bg-gray-50"
+        class="w-full bg-gray-50 text-lg"
         v-model="userRegisterStore.email"
         placeholder="E-mail"
       />
@@ -64,7 +59,7 @@ const userRegisterStore = useUserRegisterStore()
         <input
           type="text"
           style="outline: 0"
-          class="w-full bg-gray-50"
+          class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.zip"
           placeholder="Zip Code"
         />
@@ -75,7 +70,7 @@ const userRegisterStore = useUserRegisterStore()
         <input
           type="text"
           style="outline: 0"
-          class="w-full bg-gray-50"
+          class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.address"
           placeholder="Address"
         />
@@ -88,7 +83,7 @@ const userRegisterStore = useUserRegisterStore()
         <input
           type="text"
           style="outline: 0"
-          class="w-full bg-gray-50"
+          class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.city"
           placeholder="City"
         />
@@ -99,7 +94,7 @@ const userRegisterStore = useUserRegisterStore()
         <input
           type="text"
           style="outline: 0"
-          class="w-full bg-gray-50"
+          class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.state"
           placeholder="State"
         />

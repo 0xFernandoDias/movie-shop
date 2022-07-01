@@ -10,9 +10,13 @@ export const useMoviesStore = defineStore({
   getters: {
     getMovies: (state) => state.movies,
     getFilteredMovies(state) {
-      return state.movies.filter((movie) =>
-        movie.title.match(state.searchInput)
-      )
+      if (state.getFilteredMovies !== '') {
+        return state.movies.filter((movie) =>
+          movie.title.toLowerCase().includes(state.searchInput.toLowerCase())
+        )
+      } else {
+        return state.movies
+      }
     },
     getCart: (state) => {
       let cart = state.movies.filter((movie) => {

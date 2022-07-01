@@ -1,24 +1,29 @@
 <script setup>
+import { useMoviesStore } from '../stores/movies'
 import { useAppDataStore } from '../stores/appData'
-
 import FormsContainer from '../components/FormsContainer.vue'
 import CheckoutContainer from '../components/CheckoutContainer.vue'
-import ModalComponent from '../components/ModalComponent.vue'
 
 const appDataStore = useAppDataStore()
+const moviesStore = useMoviesStore()
 </script>
 
 <template>
-  <div class="h-full">
-    <main class="w-full flex flex-col flex-wrap px-32 py-32 gap-12">
-      <h1>Checkout</h1>
-      <div class="flex flex-row justify-between">
-        <FormsContainer />
-        <CheckoutContainer />
-      </div>
-    </main>
-    <div v-show="appDataStore.showModal">
-      <ModalComponent />
+  <main
+    class="w-full flex flex-col flex-wrap px-16 py-24 gap-12 justify-center"
+    :onclick="() => appDataStore.hideMenus()"
+    v-if="moviesStore.getCartItemsQuantity > 0"
+  >
+    <h1 class="text-xl">Checkout</h1>
+    <div class="flex flex-row justify-between">
+      <FormsContainer />
+      <CheckoutContainer />
     </div>
-  </div>
+  </main>
+  <main
+    class="w-full h-full flex flex-col flex-wrap px-16 py-24 gap-12 justify-center items-center"
+    v-else
+  >
+    Your cart is empty
+  </main>
 </template>

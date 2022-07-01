@@ -7,22 +7,26 @@ import ButtonComponent from './ButtonComponent.vue'
 const appDataStore = useAppDataStore()
 const moviesStore = useMoviesStore()
 const userRegisterStore = useUserRegisterStore()
-
-function handleModalSubmit() {
-  moviesStore.deleteAllCartItems()
-  moviesStore.deleteAllFavorites()
-  userRegisterStore.resetUserRegister()
-  appDataStore.showModal = false
-  // router.push({ name: '/' })
-}
 </script>
 
 <template>
-  <div>
-    <h1>Hello {{ userRegisterStore.getUserName }}</h1>
-    <span>Your purchase has been successfully completed</span>
-    <ButtonComponent :onclick="() => handleModalSubmit()"
-      >Go back to the store</ButtonComponent
-    >
+  <div
+    class="flex flex-col w-[70vh] max-h-[40vh] fixed h-full border-2 border-gray-400 bg-gray-50 justify-between items-center p-8 z-50"
+  >
+    <h1 class="text-xl">Thank you {{ userRegisterStore.getUserName }}!</h1>
+    <span class="text-lg">Your purchase has been successfully completed!</span>
+    <ButtonComponent
+      :text="'Go back to the store'"
+      :color="'bg-indigo-600'"
+      :onClick="
+        () => {
+          userRegisterStore.resetUserRegister(),
+            $router.push({ path: '/' }),
+            appDataStore.hideModal(),
+            moviesStore.deleteAllCartItems(),
+            moviesStore.deleteAllFavorites()
+        }
+      "
+    />
   </div>
 </template>

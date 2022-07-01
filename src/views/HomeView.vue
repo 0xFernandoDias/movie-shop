@@ -9,7 +9,10 @@ const moviesStore = useMoviesStore()
 </script>
 
 <template>
-  <main class="w-full flex flex-row flex-wrap px-32 py-32 gap-12">
+  <main
+    class="w-full flex flex-row flex-wrap px-16 py-24 gap-12 justify-center"
+    :onclick="() => appDataStore.hideMenus()"
+  >
     <CardComponent
       :movie="movie"
       v-for="movie in moviesStore.getFilteredMovies"

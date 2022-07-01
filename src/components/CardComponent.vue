@@ -38,22 +38,22 @@ defineProps({
         />
       </div>
       <div class="flex flex-row justify-center py-4">
-        <span>{{ movie.release_date }}</span>
+        <span class="text-sm text-gray-50">{{ movie.release_date }}</span>
       </div>
     </div>
     <div class="flex flex-col items-center px-4">
-      <span class="py-4 text-center"
+      <span class="py-4 text-center text-sm"
         ><b>{{ movie.title }}</b></span
       >
       <div class="flex flex-row justify-between w-24">
         <div class="flex flex-row items-center">
-          <StarIcon /><span class="flex px-2"
+          <StarIcon /><span class="flex px-2 text-base"
             ><b>{{ Math.round(movie.vote_average) }}</b></span
           >
         </div>
-        <span>{{ movie.media_type }}</span>
+        <span class="text-sm">{{ movie.media_type }}</span>
       </div>
-      <span class="py-4"
+      <span class="py-4 text-sm"
         ><b>{{
           new Intl.NumberFormat('en-US', {
             style: 'currency',

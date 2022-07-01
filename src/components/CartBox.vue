@@ -1,9 +1,11 @@
 <script setup>
+import { useAppDataStore } from '../stores/appData'
 import { useMoviesStore } from '../stores/movies'
 import TrashIcon from '../assets/TrashIcon.vue'
 import TotalPrice from './TotalPrice.vue'
 import ButtonComponent from './ButtonComponent.vue'
 
+const appDataStore = useAppDataStore()
 const moviesStore = useMoviesStore()
 </script>
 
@@ -13,11 +15,11 @@ const moviesStore = useMoviesStore()
   >
     <div class="flex flex-col">
       <div class="flex flex-row justify-between pb-4">
-        <h1>My Cart</h1>
+        <h1 class="text-lg"><b>My Cart</b></h1>
         <a
           as="button"
           v-if="moviesStore.getCartItemsQuantity > 0"
-          class="underline underline-offset-1 cursor-pointer text-indigo-600"
+          class="text-lg underline underline-offset-1 cursor-pointer text-indigo-600"
           :onclick="() => moviesStore.deleteAllCartItems()"
         >
           Clear
@@ -36,7 +38,7 @@ const moviesStore = useMoviesStore()
             />
             <span class="w-36 mx-2">{{ movie.title }}</span>
             <span class="mx-2">1</span>
-            <span span class="mx-2">{{
+            <span span class="mx-2 text-xl">{{
               new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
@@ -59,7 +61,13 @@ const moviesStore = useMoviesStore()
       <ButtonComponent
         :text="'Checkout'"
         :color="'bg-indigo-600'"
-        :onClick="() => $router.push({ path: '/checkout' })"
+        :onClick="
+          () => {
+            $router.push({ path: '/checkout' }),
+              appDataStore.hideFavorites(),
+              appDataStore.hideCart()
+          }
+        "
       />
     </div>
   </div>

@@ -2,15 +2,15 @@
 defineProps({
   text: {
     type: String,
-    required: false,
+    required: true,
   },
   color: {
     type: String,
-    required: false,
+    required: true,
   },
   onClick: {
     type: Function,
-    required: false,
+    required: true,
   },
 })
 </script>
@@ -18,7 +18,7 @@ defineProps({
 <template>
   <button
     as="div"
-    :class="`${color} h-12 text-gray-50 rounded`"
+    :class="`${color} h-12 text-gray-50 rounded w-full text-lg hover:opacity-80`"
     :onclick="() => onClick()"
   >
     <b>{{ text }}</b>

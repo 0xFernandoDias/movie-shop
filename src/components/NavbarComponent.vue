@@ -12,7 +12,7 @@ const moviesStore = useMoviesStore()
 
 <template>
   <nav
-    class="w-full flex flex-row px-8 py-1 bg-teal-200 justify-between items-center"
+    class="w-full h-16 flex flex-row px-8 py-1 bg-teal-200 justify-between items-center"
   >
     <LogoIcon />
     <form
@@ -23,22 +23,25 @@ const moviesStore = useMoviesStore()
         v-model="moviesStore.searchInput"
         placeholder="Search"
         style="outline: 0"
-        class="w-24 bg-gray-50"
+        class="w-36 bg-gray-50 text-lg"
       />
       <SearchIcon />
     </form>
-    <div class="w-24 flex flex-row justify-between items-center mb-4">
+    <div class="w-24 flex flex-row justify-between items-center">
       <button
         class="flex flex-col"
         as="div"
         :onclick="
           () =>
-            (appDataStore.isFavoritesVisible = !appDataStore.isFavoritesVisible)
+            appDataStore.getIsFavoritesVisible
+              ? appDataStore.hideFavorites()
+              : appDataStore.showFavorites()
         "
       >
-        <div class="flex flex-row justify-end w-full relative top-3">
+        <div class="flex flex-row justify-end w-full -translate-y-3 z-50">
           <div
-            class="flex bg-yellow-200 rounded-full w-6 justify-center align-center"
+            class="flex bg-yellow-200 rounded-full w-6 justify-center align-center absolute text-base"
+            v-if="moviesStore.getFavoritesQuantity > 0"
           >
             <b>{{ moviesStore.getFavoritesQuantity }}</b>
           </div>
@@ -50,12 +53,16 @@ const moviesStore = useMoviesStore()
         class="flex flex-col"
         as="div"
         :onclick="
-          () => (appDataStore.isCartVisible = !appDataStore.isCartVisible)
+          () =>
+            appDataStore.getIsCartVisible
+              ? appDataStore.hideCart()
+              : appDataStore.showCart()
         "
       >
-        <div class="flex flex-row justify-end w-full relative top-3">
+        <div class="flex flex-row justify-end w-full -translate-y-3 z-50">
           <div
-            class="flex bg-yellow-200 rounded-full w-6 justify-center align-center"
+            class="flex bg-yellow-200 rounded-full w-6 justify-center align-center absolute text-base"
+            v-if="moviesStore.getCartItemsQuantity > 0"
           >
             <b>{{ moviesStore.getCartItemsQuantity }}</b>
           </div>

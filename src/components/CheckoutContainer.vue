@@ -1,17 +1,14 @@
 <script setup>
 import { useAppDataStore } from '../stores/appData'
 import { useMoviesStore } from '../stores/movies'
+import { useUserRegisterStore } from '../stores/userRegister'
 import TotalPrice from './TotalPrice.vue'
 import ButtonComponent from './ButtonComponent.vue'
 import TrashIcon from '../assets/TrashIcon.vue'
 
 const appDataStore = useAppDataStore()
 const moviesStore = useMoviesStore()
-
-function handleCheckoutSubmit() {
-  appDataStore.showModal = true
-  // validations
-}
+const userRegisterStore = useUserRegisterStore()
 </script>
 
 <template>
@@ -21,35 +18,45 @@ function handleCheckoutSubmit() {
     </div>
     <ul class="flex flex-col gap-4 w-full">
       <div
+        class="flex flex-col gap-4"
         v-for="movie in moviesStore.getCart"
         :key="movie.title"
-        class="flex flex-row items-center w-full justify-between"
       >
-        <img
-          class="flex h-32"
-          :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
-        />
-        <span class="w-36 mx-2">{{ movie.title }}</span>
-        <span class="mx-2">1</span>
-        <span span class="mx-2">{{
-          new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(movie.price)
-        }}</span>
-        <TrashIcon
-          as="button"
-          class="cursor-pointer"
-          :onclick="() => moviesStore.deleteCartItem(movie.title)"
-        />
+        <div class="flex flex-row items-center w-full justify-between">
+          <img
+            class="flex h-32"
+            :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+          />
+          <span class="w-36 mx-2">{{ movie.title }}</span>
+          <span class="mx-2">1</span>
+          <span span class="mx-2 text-xl">{{
+            new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }).format(movie.price)
+          }}</span>
+          <TrashIcon
+            as="button"
+            class="cursor-pointer"
+            :onclick="() => moviesStore.deleteCartItem(movie.title)"
+          />
+        </div>
+        <div class="flex w-full h-0.5 bg-gray-400" />
       </div>
-      <div class="flex w-[100%] h-0.5 bg-gray-400" />
     </ul>
     <TotalPrice />
     <ButtonComponent
       :text="'Finalize'"
-      :color="'bg-indigo-600'"
-      :onclick="() => handleCheckoutSubmit()"
+      :color="
+        userRegisterStore.isUserRegisterFilled
+          ? 'bg-indigo-600'
+          : 'bg-indigo-200'
+      "
+      :onClick="
+        () => {
+          userRegisterStore.isUserRegisterFilled && appDataStore.showModal()
+        }
+      "
     />
   </div>
 </template>

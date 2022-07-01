@@ -12,11 +12,11 @@ const moviesStore = useMoviesStore()
   >
     <div class="flex flex-col">
       <div class="flex flex-row justify-between pb-4">
-        <h2>My Favorites</h2>
+        <h2 class="text-lg"><b>My Favorites</b></h2>
         <a
           as="button"
           v-if="moviesStore.getFavoritesQuantity > 0"
-          class="underline underline-offset-1 cursor-pointer text-indigo-600"
+          class="text-lg underline underline-offset-1 cursor-pointer text-indigo-600"
           :onclick="() => moviesStore.deleteAllFavorites()"
         >
           Clear
@@ -33,8 +33,8 @@ const moviesStore = useMoviesStore()
               class="flex h-24"
               :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
             />
-            <span class="w-36 mx-2">{{ movie.title }}</span>
-            <span span class="mx-2">{{
+            <span class="w-36 mx-2 text-sm">{{ movie.title }}</span>
+            <span span class="mx-2 text-xl">{{
               new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
