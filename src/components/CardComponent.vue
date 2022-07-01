@@ -15,29 +15,53 @@ defineProps({
 </script>
 
 <template>
-  <div class="column">
-    <div class="bg-image" :src="movie.poster_path">
-      <FavoritesIcon
-        as="button"
-        :location="'cart'"
-        :active="movie.isFavorite ? true : false"
-        :onclick="
-          !movie.isFavorite
-            ? () => moviesStore.addToFavorites(movie.title)
-            : () => moviesStore.deleteFavorite(movie.title)
-        "
-      />
-      <span>{{ movie.release_date }}</span>
+  <div
+    class="w-64 flex flex-col outline outline-1 outline-gray-400 mb-16 pb-4 justify-between mx-1"
+  >
+    <div
+      class="flex flex-col justify-between h-96 border-b-2 border-b-gray-400"
+      :style="{
+        'background-image': `url('https://image.tmdb.org/t/p/original${movie.poster_path}')`,
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover',
+      }"
+    >
+      <div class="flex flex-row justify-end px-4 py-4">
+        <FavoritesIcon
+          as="button"
+          :location="'cart'"
+          :active="movie.isFavorite ? true : false"
+          :onclick="
+            !movie.isFavorite
+              ? () => moviesStore.addToFavorites(movie.title)
+              : () => moviesStore.deleteFavorite(movie.title)
+          "
+        />
+      </div>
+      <div class="flex flex-row justify-center py-4">
+        <span>{{ movie.release_date }}</span>
+      </div>
     </div>
-    <div class="main-info-content column">
-      <span>{{ movie.title }}</span>
-      <div class="row">
-        <div class="row">
-          <StarIcon /><span>{{ movie.vote_average }}</span>
+    <div class="flex flex-col items-center px-4">
+      <span class="py-4 text-center"
+        ><b>{{ movie.title }}</b></span
+      >
+      <div class="flex flex-row justify-between w-24">
+        <div class="flex flex-row items-center">
+          <StarIcon /><span class="flex px-2"
+            ><b>{{ Math.round(movie.vote_average) }}</b></span
+          >
         </div>
         <span>{{ movie.media_type }}</span>
       </div>
-      <span>{{ movie.price }}</span>
+      <span class="py-4"
+        ><b>{{
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          }).format(movie.price)
+        }}</b></span
+      >
     </div>
     <ButtonComponent
       :text="movie.isInCart ? 'Remove to cart' : 'Add to cart'"

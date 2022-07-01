@@ -9,7 +9,14 @@ const appDataStore = useAppDataStore()
 </script>
 
 <template>
-  <main class="column">
+  <main
+    class="column"
+    :onclick="
+      () => {
+        appDataStore.menuBox = 'none'
+      }
+    "
+  >
     <h1>Checkout</h1>
     <div class="row">
       <FormsContainer />

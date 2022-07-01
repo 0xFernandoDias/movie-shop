@@ -16,6 +16,5 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-// eslint-disable-next-line vue/multi-word-component-names
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

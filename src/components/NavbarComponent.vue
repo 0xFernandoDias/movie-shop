@@ -21,35 +21,52 @@ function handleNavbarIconsClick(icon) {
 </script>
 
 <template>
-  <nav class="row">
+  <nav
+    class="w-full flex flex-row px-8 py-0 bg-teal-200 justify-between items-center"
+  >
     <LogoIcon />
-    <form class="space between">
+    <form
+      class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400"
+    >
       <input
-        type="search"
+        type="text"
         v-model="moviesStore.searchInput"
         placeholder="Search"
+        style="outline: 0"
+        class="w-56 mx-2 bg-gray-50"
       />
       <SearchIcon />
     </form>
-
-    <div class="row">
-      <div
-        class="column"
-        as="button"
+    <div class="w-24 flex flex-row justify-between items-center mb-4">
+      <button
+        class="flex flex-col"
+        as="div"
         :onclick="() => handleNavbarIconsClick('favorites')"
       >
-        <div class="quantity">{{ moviesStore.getFavoritesQuantity }}</div>
+        <div class="flex flex-row justify-end w-full relative top-3">
+          <div
+            class="flex bg-yellow-200 rounded-full w-6 justify-center align-center"
+          >
+            <b>{{ moviesStore.getFavoritesQuantity }}</b>
+          </div>
+        </div>
         <FavoritesIcon :location="'navbar'" :active="false" />
-      </div>
+      </button>
 
-      <div
-        class="column"
-        as="button"
+      <button
+        class="flex flex-col"
+        as="div"
         :onclick="() => handleNavbarIconsClick('cart')"
       >
-        <div class="quantity">{{ moviesStore.getCartItemsQuantity }}</div>
+        <div class="flex flex-row justify-end w-full relative top-3">
+          <div
+            class="flex bg-yellow-200 rounded-full w-6 justify-center align-center"
+          >
+            <b>{{ moviesStore.getCartItemsQuantity }}</b>
+          </div>
+        </div>
         <CartIcon :location="'navbar'" />
-      </div>
+      </button>
     </div>
   </nav>
 </template>

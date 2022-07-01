@@ -19,14 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    class="column"
-    :onclick="
-      () => {
-        appDataStore.menuBox = 'none'
-      }
-    "
-  >
+  <div class="w-full flex flex-col box-border justify-center p-0 m-0">
     <NavbarComponent />
     <MenuBox
       v-show="

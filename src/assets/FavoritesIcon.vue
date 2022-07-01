@@ -15,8 +15,7 @@ defineProps({
 <template>
   <font-awesome-icon
     icon="fa-solid fa-heart"
+    class="fa-2xl"
     :style="location === 'navbar' ? { color: '#f9fafb' } : { color: '#0f172a' }"
   />
 </template>
-
-<style scoped></style>
