@@ -1,3 +1,4 @@
+<br/>
 <h2>Wassup guys, it was a pleasure to develop this challenge<br/>
 I had fun and learned a lot, the application is rich in details. 😄</h2>
 
