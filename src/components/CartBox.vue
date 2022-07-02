@@ -11,7 +11,8 @@ const moviesStore = useMoviesStore()
 
 <template>
   <div
-    class="flex flex-col w-[330px] max-h-[80vh] fixed h-full bg-gray-50 outline outline-2 outline-gray-400 p-4 justify-between"
+    class="flex flex-col w-[330px] max-h-[80vh] fixed h-full bg-gray-50 outline outline-2 outline-gray-400 p-4 justify-between shadow-2xl z-50"
+    id="pot"
   >
     <div class="flex flex-col">
       <div class="flex flex-row justify-between pb-4">
@@ -29,14 +30,16 @@ const moviesStore = useMoviesStore()
         <ul class="flex flex-col gap-4">
           <div
             v-for="movie in moviesStore.getCart"
-            :key="movie.title"
+            :key="movie.id"
             class="flex flex-row items-center"
           >
             <img
               class="flex h-24"
               :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
             />
-            <span class="w-36 mx-2">{{ movie.title }}</span>
+            <span class="w-36 mx-2"
+              ><b>{{ movie.title }}</b></span
+            >
             <span class="mx-2">1</span>
             <span span class="mx-2 text-xl">{{
               new Intl.NumberFormat('en-US', {
@@ -72,3 +75,19 @@ const moviesStore = useMoviesStore()
     </div>
   </div>
 </template>
+
+<style scoped>
+#pot {
+  -webkit-animation: linear;
+  -webkit-animation-name: run;
+  -webkit-animation-duration: 0.09s;
+}
+@-webkit-keyframes run {
+  0% {
+    right: calc(-100px);
+  }
+  100% {
+    right: calc(0px);
+  }
+}
+</style>

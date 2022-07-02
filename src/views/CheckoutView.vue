@@ -14,7 +14,7 @@ const moviesStore = useMoviesStore()
     :onclick="() => appDataStore.hideMenus()"
     v-if="moviesStore.getCartItemsQuantity > 0"
   >
-    <h1 class="text-xl">Checkout</h1>
+    <h1 class="text-xl"><b>Checkout</b></h1>
     <div class="flex flex-row justify-between">
       <FormsContainer />
       <CheckoutContainer />

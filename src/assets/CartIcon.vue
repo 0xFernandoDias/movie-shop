@@ -11,7 +11,10 @@ defineProps({
   <div class="tooltip">
     <font-awesome-icon
       icon="fa-solid fa-cart-shopping"
-      :class="location !== 'menuBox' && 'fa-2xl hover:opacity-80'"
+      :class="
+        location !== 'menuBox' && 'fa-2xl hover:opacity-80 active:opacity-60'
+      "
+      class="hover:opacity-80 active:opacity-60"
       :style="
         location === 'menuBox' ? { color: '#10b981' } : { color: '#f9fafb' }
       "

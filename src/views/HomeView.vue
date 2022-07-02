@@ -15,8 +15,8 @@ const moviesStore = useMoviesStore()
   >
     <CardComponent
       :movie="movie"
+      :key="movie.id"
       v-for="movie in moviesStore.getFilteredMovies"
-      :key="movie.release_date"
     />
   </main>
 </template>

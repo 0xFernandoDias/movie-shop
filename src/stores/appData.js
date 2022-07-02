@@ -6,7 +6,6 @@ export const useAppDataStore = defineStore({
     isFavoritesVisible: false,
     isCartVisible: false,
     isModalVisible: false,
-    formsOkay: false,
   }),
   getters: {
     getIsFavoritesVisible: (state) => state.isFavoritesVisible,

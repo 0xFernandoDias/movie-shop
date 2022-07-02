@@ -4,6 +4,14 @@ import { useUserRegisterStore } from '../stores/userRegister'
 const userRegisterStore = useUserRegisterStore()
 </script>
 
+<script>
+import { maska } from 'maska'
+
+export default {
+  directives: { maska },
+}
+</script>
+
 <template>
   <div class="flex flex-col w-[40%] gap-8">
     <form
@@ -27,6 +35,7 @@ const userRegisterStore = useUserRegisterStore()
           class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.cpf"
           placeholder="CPF"
+          v-maska="'###.###.###-##'"
         />
       </form>
       <form
@@ -38,6 +47,7 @@ const userRegisterStore = useUserRegisterStore()
           class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.phone"
           placeholder="Phone"
+          v-maska="'(##) #####-####'"
         />
       </form>
     </div>
@@ -62,6 +72,7 @@ const userRegisterStore = useUserRegisterStore()
           class="w-full bg-gray-50 text-lg"
           v-model="userRegisterStore.zip"
           placeholder="Zip Code"
+          v-maska="'#####-###'"
         />
       </form>
       <form

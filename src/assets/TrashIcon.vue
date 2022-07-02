@@ -3,7 +3,7 @@
     <font-awesome-icon
       icon="fa-solid fa-trash"
       style="color: #0f172a"
-      :class="'hover:opacity-80'"
+      :class="'hover:opacity-80 active:opacity-60'"
     />
     <span class="tooltiptext">Remove</span>
   </div>

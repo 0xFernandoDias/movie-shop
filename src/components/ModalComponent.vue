@@ -11,9 +11,11 @@ const userRegisterStore = useUserRegisterStore()
 
 <template>
   <div
-    class="flex flex-col w-[70vh] max-h-[40vh] fixed h-full border-2 border-gray-400 bg-gray-50 justify-between items-center p-8 z-50"
+    class="flex flex-col w-[70vh] max-h-[40vh] fixed h-full border-2 border-gray-400 bg-gray-50 justify-between items-center p-8 z-50 shadow-2xl"
   >
-    <h1 class="text-xl">Thank you {{ userRegisterStore.getUserName }}!</h1>
+    <h1 class="text-xl">
+      <b>Thank you {{ userRegisterStore.getUserName }}!</b>
+    </h1>
     <span class="text-lg">Your purchase has been successfully completed!</span>
     <ButtonComponent
       :text="'Go back to the store'"

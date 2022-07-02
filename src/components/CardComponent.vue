@@ -37,7 +37,7 @@ defineProps({
           "
         />
       </div>
-      <div class="flex flex-row justify-center py-4">
+      <div class="flex flex-row justify-center py-1">
         <span class="text-sm text-gray-50">{{ movie.release_date }}</span>
       </div>
     </div>

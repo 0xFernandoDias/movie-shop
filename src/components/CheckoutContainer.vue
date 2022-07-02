@@ -20,14 +20,16 @@ const userRegisterStore = useUserRegisterStore()
       <div
         class="flex flex-col gap-4"
         v-for="movie in moviesStore.getCart"
-        :key="movie.title"
+        :key="movie.id"
       >
         <div class="flex flex-row items-center w-full justify-between">
           <img
             class="flex h-32"
             :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
           />
-          <span class="w-36 mx-2">{{ movie.title }}</span>
+          <span class="w-36 mx-2"
+            ><b>{{ movie.title }}</b></span
+          >
           <span class="mx-2">1</span>
           <span span class="mx-2 text-xl">{{
             new Intl.NumberFormat('en-US', {

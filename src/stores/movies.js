@@ -10,13 +10,9 @@ export const useMoviesStore = defineStore({
   getters: {
     getMovies: (state) => state.movies,
     getFilteredMovies(state) {
-      if (state.getFilteredMovies !== '') {
-        return state.movies.filter((movie) =>
-          movie.title.toLowerCase().includes(state.searchInput.toLowerCase())
-        )
-      } else {
-        return state.movies
-      }
+      return state.movies.filter((movie) =>
+        movie.title.toLowerCase().match(state.searchInput.toLowerCase())
+      )
     },
     getCart: (state) => {
       let cart = state.movies.filter((movie) => {
@@ -62,6 +58,9 @@ export const useMoviesStore = defineStore({
     },
   },
   actions: {
+    clearSearchInput() {
+      this.searchInput = ''
+    },
     addToCart(movieTitle) {
       this.movies.forEach((movie) => {
         if (movie.title === movieTitle) {

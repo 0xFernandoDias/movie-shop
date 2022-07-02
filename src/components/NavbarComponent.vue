@@ -12,18 +12,18 @@ const moviesStore = useMoviesStore()
 
 <template>
   <nav
-    class="w-full h-16 flex flex-row px-8 py-1 bg-teal-200 justify-between items-center"
+    class="w-full h-16 flex flex-row px-8 py-1 bg-teal-200 justify-between items-center shadow"
   >
     <LogoIcon />
     <form
       class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400 mx-4"
     >
       <input
-        type="text"
+        type="search"
         v-model="moviesStore.searchInput"
         placeholder="Search"
         style="outline: 0"
-        class="w-36 bg-gray-50 text-lg"
+        class="w-full min-w-36 bg-gray-50 text-lg"
       />
       <SearchIcon />
     </form>

@@ -21,14 +21,14 @@ export const useUserRegisterStore = defineStore({
     },
     isUserRegisterFilled: (state) => {
       if (
-        state.name !== '' &&
-        state.cpf !== '' &&
-        state.phone !== '' &&
-        state.email !== '' &&
-        state.zip !== '' &&
-        state.address !== '' &&
-        state.city !== '' &&
-        state.state !== ''
+        state.name.length > 2 &&
+        state.cpf.length > 13 &&
+        state.phone.length > 13 &&
+        state.email.length > 10 &&
+        state.zip.length > 8 &&
+        state.address.length > 5 &&
+        state.city.length > 1 &&
+        state.state.length > 1
       ) {
         return true
       } else false
