@@ -26,7 +26,7 @@ const moviesStore = useMoviesStore()
           Clear
         </a>
       </div>
-      <div class="flex overflow-y-auto max-h-[60vh]">
+      <div class="flex overflow-y-auto overflow-x-hidden max-h-[60vh]">
         <ul class="flex flex-col gap-4">
           <div
             v-for="movie in moviesStore.getCart"
