@@ -13,6 +13,12 @@ Starting from the first that you already have node installed<br/><br/>
     $ git clone git@github.com:nand0diaz/movie-shop.git
 ```
 
+- Open the project folder<br/>
+
+```bash
+    $ cd movie-shop
+```
+
 - Install dependencies<br/>
 
 ```bash
