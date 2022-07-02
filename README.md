@@ -34,7 +34,7 @@ Starting from the first that you already have node installed<br/><br/>
 - Vue Router
 - Tailwind
 - ESLint, Prettier
-- Axis
+- Axios
 - Pinia
 - Font Awesome
 - Maska
