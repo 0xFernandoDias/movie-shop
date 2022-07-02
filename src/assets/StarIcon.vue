@@ -1,3 +1,3 @@
 <template>
-  <font-awesome-icon icon="fa-solid fa-star" style="color: #0f172a" />
+  <font-awesome-icon icon="fa-solid fa-star" style="color: #eab308" />
 </template>

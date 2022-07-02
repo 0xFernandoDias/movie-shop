@@ -11,7 +11,7 @@ const moviesStore = useMoviesStore()
 
 <template>
   <div
-    class="flex flex-col w-[330px] max-h-[80vh] fixed h-full bg-gray-50 outline outline-2 outline-gray-400 p-4 justify-between shadow-2xl z-50"
+    class="flex flex-col w-[45vh] md:w-[380px] h-[80vh] fixed bg-gray-50 outline outline-2 outline-gray-400 p-4 justify-between shadow-2xl z-50"
     id="pot"
   >
     <div class="flex flex-col">
@@ -31,7 +31,7 @@ const moviesStore = useMoviesStore()
           <div
             v-for="movie in moviesStore.getCart"
             :key="movie.id"
-            class="flex flex-row items-center"
+            class="flex flex-row justify-between items-center w-full"
           >
             <img
               class="flex h-24"

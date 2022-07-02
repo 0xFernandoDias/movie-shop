@@ -19,11 +19,11 @@ const moviesStore = useMoviesStore()
       class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400 mx-4"
     >
       <input
-        type="search"
+        type="text"
         v-model="moviesStore.searchInput"
         placeholder="Search"
         style="outline: 0"
-        class="w-full min-w-36 bg-gray-50 text-lg"
+        class="md:w-80 w-24 bg-gray-50 text-lg"
       />
       <SearchIcon />
     </form>

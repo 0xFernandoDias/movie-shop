@@ -115,7 +115,7 @@ export const useMoviesStore = defineStore({
           ...obj,
           isFavorite: false,
           isInTheCart: false,
-          price: Math.round(obj.vote_average) * 10,
+          price: Math.round(obj.vote_average) * 3,
         }))
 
         this.movies = moviesWithAdditionalProps

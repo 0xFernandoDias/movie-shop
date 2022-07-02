@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col w-[40%] gap-8">
+  <div class="flex flex-col w-full md:w-[40%] gap-8">
     <form
       class="flex flex-row bg-gray-50 h-10 items-center px-2 rounded border-2 border-gray-400"
     >

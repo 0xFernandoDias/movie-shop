@@ -32,7 +32,7 @@ onMounted(() => {
 
 <template>
   <div class="w-full flex flex-col box-border p-0 m-0">
-    <div class="flex fixed w-full">
+    <div class="flex fixed w-full z-50">
       <NavbarComponent />
     </div>
     <div

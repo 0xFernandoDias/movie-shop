@@ -10,12 +10,12 @@ const moviesStore = useMoviesStore()
 
 <template>
   <main
-    class="w-full flex flex-col flex-wrap px-16 py-24 gap-12 justify-center"
+    class="w-full flex flex-col flex-wrap px-1 md:px-16 py-24 gap-12 justify-center"
     :onclick="() => appDataStore.hideMenus()"
     v-if="moviesStore.getCartItemsQuantity > 0"
   >
     <h1 class="text-xl"><b>Checkout</b></h1>
-    <div class="flex flex-row justify-between">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
       <FormsContainer />
       <CheckoutContainer />
     </div>

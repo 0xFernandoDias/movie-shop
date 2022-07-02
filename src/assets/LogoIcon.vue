@@ -10,7 +10,11 @@ const moviesStore = useMoviesStore()
     class="cursor-pointer"
     :onclick="
       () => {
-        moviesStore.clearSearchInput(), $router.push({ path: '/' })
+        if ($route.path === '/checkout') {
+          $router.push('/'), moviesStore.clearSearchInput()
+        } else {
+          $router.go('/')
+        }
       }
     "
   >

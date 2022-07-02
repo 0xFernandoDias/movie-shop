@@ -12,8 +12,8 @@ const userRegisterStore = useUserRegisterStore()
 </script>
 
 <template>
-  <div class="flex flex-col w-[50%] gap-8">
-    <div class="flex flex-row w-full justify-between pr-32">
+  <div class="flex flex-col w-full md:w-[50%] gap-8">
+    <div class="flex flex-row w-full justify-between md:pr-[10%]">
       <span>Image</span><span>Name</span><span>Qtd</span><span>Price</span>
     </div>
     <ul class="flex flex-col gap-4 w-full">
@@ -48,7 +48,7 @@ const userRegisterStore = useUserRegisterStore()
     </ul>
     <TotalPrice />
     <ButtonComponent
-      :text="'Finalize'"
+      :text="'Buy'"
       :color="
         userRegisterStore.isUserRegisterFilled
           ? 'bg-indigo-600'

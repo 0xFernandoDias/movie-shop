@@ -16,7 +16,7 @@ defineProps({
 
 <template>
   <div
-    class="w-64 flex flex-col outline outline-2 outline-gray-400 mb-16 justify-between"
+    class="w-64 flex flex-col outline outline-2 outline-gray-400 mb-16 justify-between bg-gray-200/80 shadow-xl transition ease-in-out delay-20 hover:-translate-y-1 hover:scale-105 duration-300"
   >
     <div
       class="flex flex-col justify-between h-96 border-b-2 border-b-gray-400"
@@ -38,7 +38,9 @@ defineProps({
         />
       </div>
       <div class="flex flex-row justify-center py-1">
-        <span class="text-sm text-gray-50">{{ movie.release_date }}</span>
+        <span class="text-sm text-gray-50">{{
+          movie.release_date.replace(/-/g, '/')
+        }}</span>
       </div>
     </div>
     <div class="flex flex-col items-center px-4">
@@ -63,11 +65,11 @@ defineProps({
       >
     </div>
     <ButtonComponent
-      :text="movie.isInCart ? 'Remove to cart' : 'Add to cart'"
-      :color="movie.isInCart ? 'bg-red-500' : 'bg-indigo-600'"
+      :text="movie.isInCart ? 'See in cart' : 'Add to cart'"
+      :color="movie.isInCart ? 'bg-emerald-500' : 'bg-indigo-600'"
       :onClick="
         movie.isInCart
-          ? () => moviesStore.deleteCartItem(movie.title)
+          ? () => $router.push({ path: '/checkout' })
           : () => moviesStore.addToCart(movie.title)
       "
     />
