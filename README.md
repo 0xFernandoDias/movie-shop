@@ -2,6 +2,8 @@
 <h2>Wassup guys, it was a pleasure to develop this challenge<br/>
 I had fun and learned a lot, the application is rich in details. 😄</h2>
 
+https://movie-shop-eta.vercel.app/
+
 <br/>
 
 <h2>Getting started:</h2>
